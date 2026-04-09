@@ -17,7 +17,7 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
   return (
     <nav
       className={cn(
-        "flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400",
+        "flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] font-black uppercase tracking-widest text-slate-400",
         className
       )}
     >

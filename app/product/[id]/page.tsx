@@ -73,7 +73,7 @@ export default function ProductPage({
                   src={product.image}
                   alt={product.name}
                   fill
-                  className="object-cover p-12 transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                   priority
                 />
                 <div className="absolute top-8 left-8">
@@ -195,13 +195,13 @@ export default function ProductPage({
         {relatedProducts.length > 0 && (
           <section className="py-20 md:py-32">
             <div className="max-w-7xl mx-auto px-6">
-              <div className="flex items-center justify-between mb-20">
-                <h2 className="text-3xl font-black text-slate-900">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 md:mb-20 gap-6">
+                <h2 className="text-3xl font-black text-slate-900 leading-tight">
                   Sản phẩm <span className="text-slate-400">cùng danh mục</span>
                 </h2>
                 <Link
                   href={`/category/${product.category}`}
-                  className="text-brand font-black text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all"
+                  className="text-brand font-black text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all w-fit"
                 >
                   Xem tất cả <ArrowRight className="w-4 h-4" />
                 </Link>
