@@ -1,166 +1,25 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ShieldCheck,
   ArrowRight,
-  Leaf,
   Activity,
   Heart,
   Award,
-  Menu,
-  Phone,
   Star,
   Zap,
-  Globe,
 } from "lucide-react";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+
+import { products } from "@/lib/data";
 
 export default function Home() {
+  const featuredProducts = products.slice(0, 3);
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-be-vietnam selection:bg-brand/10">
-      {/* Top Header Label */}
-      <div className="bg-slate-50 py-2 hidden sm:block">
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-slate-400">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1">
-              <Globe className="w-3 h-3" /> Ship toàn quốc
-            </span>
-            <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3 h-3" /> Cam kết 100% chính hãng
-            </span>
-          </div>
-          <div>Hỗ trợ khách hàng: 0123 456 789</div>
-        </div>
-      </div>
-
-      {/* Main Navigation */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-brand rounded-lg flex items-center justify-center shadow-sm">
-              <Leaf className="text-white w-5 h-5" />
-            </div>
-            <span className="text-xl font-extrabold tracking-tight text-slate-900">
-              GreenLife
-            </span>
-          </div>
-
-          <nav className="hidden md:flex items-center gap-10 text-sm font-bold text-slate-500 uppercase tracking-wider">
-            {["Giải pháp", "Sản phẩm", "Đánh giá", "Về chúng tôi"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(" ", "-")}`}
-                  className="hover:text-brand transition-colors"
-                >
-                  {item}
-                </a>
-              ),
-            )}
-          </nav>
-
-          <div className="flex items-center gap-3 sm:gap-6">
-            <a
-              href="tel:0123456789"
-              className="sm:px-6 px-3 sm:py-3 py-2 bg-brand text-white rounded-lg font-bold text-sm hover:bg-brand-deep transition-all shadow-sm flex items-center gap-2 whitespace-nowrap"
-            >
-              <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">Tư vấn ngay</span>
-            </a>
-            <Sheet>
-              <SheetTrigger
-                render={
-                  <button
-                    className="md:hidden p-2 text-slate-600 hover:text-brand transition-colors cursor-pointer"
-                    aria-label="Open menu"
-                  >
-                    <Menu className="w-6 h-6" />
-                  </button>
-                }
-              />
-              <SheetContent
-                side="right"
-                className="w-[300px] sm:w-[400px] font-be-vietnam border-l-slate-100 bg-white shadow-2xl"
-              >
-                <SheetHeader className="text-left pt-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-9 h-9 bg-brand rounded-lg flex items-center justify-center shadow-sm">
-                      <Leaf className="text-white w-5 h-5" />
-                    </div>
-                    <span className="text-xl font-extrabold tracking-tight text-slate-900">
-                      GreenLife
-                    </span>
-                  </div>
-                  <SheetTitle className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 pt-8">
-                    Menu điều hướng
-                  </SheetTitle>
-                  <SheetDescription className="sr-only">
-                    Menu điều hướng dành cho thiết bị di động của GreenLife.
-                  </SheetDescription>
-                </SheetHeader>
-
-                <nav className="flex flex-col gap-2 mt-8 px-4">
-                  {["Giải pháp", "Sản phẩm", "Đánh giá", "Về chúng tôi"].map(
-                    (item) => (
-                      <a
-                        key={item}
-                        href={`#${item.toLowerCase().replace(" ", "-")}`}
-                        className="group flex items-center justify-between p-5 bg-slate-50 hover:bg-brand/5 rounded-2xl text-base font-bold text-slate-600 hover:text-brand transition-all duration-300"
-                      >
-                        {item}
-                        <ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-brand" />
-                      </a>
-                    ),
-                  )}
-
-                  <div className="mt-12">
-                    <a
-                      href="tel:0123456789"
-                      className="flex items-center gap-4 p-5 bg-slate-50 rounded-2xl group hover:bg-brand transition-all duration-300"
-                    >
-                      <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm group-hover:scale-90 transition-transform">
-                        <Phone className="w-5 h-5 text-brand" />
-                      </div>
-                      <div>
-                        <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest group-hover:text-white/70">
-                          Hỗ trợ 24/7
-                        </div>
-                        <div className="text-sm font-black text-slate-900 group-hover:text-white">
-                          0123 456 789
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </nav>
-
-                <div className="absolute bottom-8 left-6 right-6">
-                  <div className="p-6 bg-brand/5 rounded-2xl border border-brand/10">
-                    <div className="text-[10px] font-black text-brand uppercase tracking-widest mb-2">
-                      Cam kết
-                    </div>
-                    <div className="text-xs font-medium text-slate-500 leading-relaxed">
-                      100% sản phẩm Amway Nutrilite chính hãng, có đầy đủ hóa
-                      đơn chứng từ.
-                    </div>
-                  </div>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
-        </div>
-      </header>
-
-      <main>
-        {/* Minimalist Hero Section */}
+    <div className="text-slate-900 font-be-vietnam selection:bg-brand/10">
+      {/* Minimalist Hero Section */}
         <section className="relative pt-20 pb-32 overflow-hidden bg-white">
           <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative z-10">
@@ -344,62 +203,49 @@ export default function Home() {
                   Dòng sản phẩm <span className="text-brand">chủ lực</span>
                 </h2>
               </div>
-              <button className="text-slate-900 font-black text-xs uppercase tracking-[0.2em] flex items-center gap-4 hover:gap-6 transition-all">
+              <Link href="/category/all" className="text-slate-900 font-black text-xs uppercase tracking-[0.2em] flex items-center gap-4 hover:gap-6 transition-all">
                 Xem tất cả sản phẩm <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
 
             <div className="grid md:grid-cols-3 gap-16">
-              {[
-                {
-                  image: "/product-protein.png",
-                  name: "Nutrilite All Plant Protein",
-                  tag: "Sức khỏe nền quẳng",
-                  price: "850.000₫",
-                },
-                {
-                  image: "/product-omega3.png",
-                  name: "Nutrilite Salmon Omega-3",
-                  tag: "Hỗ trợ tim mạch",
-                  price: "920.000₫",
-                },
-                {
-                  image: "/product-vitaminc.png",
-                  name: "Nutrilite Bio C Plus",
-                  tag: "Tăng cường đề kháng",
-                  price: "460.000₫",
-                },
-              ].map((product, index) => (
+              {featuredProducts.map((product, index) => (
                 <div key={index} className="group flex flex-col h-full">
-                  <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-10 bg-slate-100">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute top-6 left-6">
-                      <span className="px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-lg text-[9px] font-black uppercase tracking-widest text-slate-900 shadow-sm border-thin">
-                        {product.tag}
-                      </span>
+                  <Link href={`/product/${product.id}`} className="block">
+                    <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-10 bg-slate-100">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute top-6 left-6">
+                        <span className="px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-lg text-[9px] font-black uppercase tracking-widest text-slate-900 shadow-sm border-thin">
+                          {product.tag}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                   <div className="flex-grow">
-                    <h3 className="text-2xl font-black mb-4 text-slate-900 group-hover:text-brand transition-colors">
-                      {product.name}
-                    </h3>
+                    <Link href={`/product/${product.id}`}>
+                      <h3 className="text-2xl font-black mb-4 text-slate-900 group-hover:text-brand transition-colors">
+                        {product.name}
+                      </h3>
+                    </Link>
                   </div>
                   <div className="flex items-center justify-between border-t border-slate-50 pt-8 mt-4">
                     <span className="text-xl font-black text-slate-400">
                       {product.price}
                     </span>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="w-12 h-12 bg-white border border-slate-200 text-slate-900 rounded-full flex items-center justify-center shadow-sm group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-all"
-                    >
-                      <ArrowRight className="w-5 h-5" />
-                    </motion.button>
+                    <Link href={`/product/${product.id}`}>
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="w-12 h-12 bg-white border border-slate-200 text-slate-900 rounded-full flex items-center justify-center shadow-sm group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-all"
+                      >
+                        <ArrowRight className="w-5 h-5" />
+                      </motion.button>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -508,71 +354,6 @@ export default function Home() {
             <div className="absolute -bottom-24 -left-24 w-[400px] h-[400px] bg-white/5 rounded-full blur-3xl"></div>
           </div>
         </section>
-      </main>
-
-      <footer className="bg-white border-t border-slate-100 py-32">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
-          <div className="col-span-1 lg:col-span-1">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
-                <Leaf className="text-white w-4 h-4" />
-              </div>
-              <span className="text-xl font-extrabold tracking-tight text-slate-900">
-                GreenLife
-              </span>
-            </div>
-            <p className="text-slate-400 font-medium leading-relaxed max-w-xs text-sm">
-              Đơn vị tiên phong cung cấp giải pháp sống nguyên bản và sản phẩm
-              Amway chính hãng tại Việt Nam.
-            </p>
-          </div>
-
-          {[
-            {
-              title: "Sản phẩm",
-              links: ["Dinh dưỡng", "Giảm cân", "Tim mạch", "Tiêu hóa"],
-            },
-            {
-              title: "Hỗ trợ",
-              links: ["Giao hàng", "Đổi trả", "Chính sách", "Liên hệ"],
-            },
-            {
-              title: "Xã hội",
-              links: ["Facebook", "Zalo", "Tiktok", "Youtube"],
-            },
-          ].map((col) => (
-            <div key={col.title}>
-              <h4 className="text-[10px] font-black uppercase tracking-[0.2em] mb-10 text-slate-900">
-                {col.title}
-              </h4>
-              <ul className="space-y-6">
-                {col.links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      className="font-bold text-sm text-slate-400 hover:text-brand transition-colors"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 mt-32 pt-12 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">
-          <div>© 2026 GREENLIFE ACADEMY. ALL RIGHTS RESERVED.</div>
-          <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-slate-900 transition-colors">
-              Bảo mật
-            </a>
-            <a href="#" className="hover:text-slate-900 transition-colors">
-              Điều khoản
-            </a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

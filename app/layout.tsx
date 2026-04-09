@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   description: "Sức khỏe tối ưu từ thiên nhiên",
 };
 
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,7 +35,12 @@ export default function RootLayout({
       lang="vi"
       className={cn("h-full", "antialiased", beVietnam.variable, inter.variable, "font-sans", geist.variable)}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <ScrollToTop />
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
