@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, MapPin, MessageSquare, Phone, Send } from "lucide-react";
 
+import { Breadcrumb } from "@/components/Breadcrumb";
+
 export default function ContactPage() {
   const contactInfo = [
     {
@@ -31,8 +33,16 @@ export default function ContactPage() {
   return (
     <div className="bg-white font-be-vietnam min-h-screen">
       {/* Page Header */}
-      <section className="pt-32 pb-20 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+      <section className="pt-32 pb-20 bg-slate-900 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <Breadcrumb
+            items={[
+              { label: "Trang chủ", href: "/" },
+              { label: "Liên hệ" }
+            ]}
+            className="mb-8"
+          />
+
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -41,15 +51,17 @@ export default function ContactPage() {
             <span className="text-brand font-black uppercase tracking-[0.3em] text-[10px] mb-6 block">
               Kết nối với chúng tôi
             </span>
-            <h1 className="text-5xl md:text-7xl font-black mb-10 text-slate-900 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-black mb-10 text-white leading-tight">
               Chúng tôi luôn <br /> <span className="text-brand">lắng nghe bạn</span>
             </h1>
-            <p className="text-slate-500 text-lg font-medium leading-relaxed max-w-2xl mx-auto">
+            <p className="text-slate-500 text-lg font-medium leading-relaxed max-w-2xl">
               Mọi ý kiến đóng góp hoặc thắc mắc của quý khách là động lực để GreenLife hoàn thiện hơn mỗi ngày.
               Hãy để lại lời nhắn, chúng tôi sẽ phản hồi sớm nhất có thể.
             </p>
           </motion.div>
         </div>
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-brand/5 -skew-x-12 translate-x-1/2"></div>
       </section>
 
       {/* Main Content */}

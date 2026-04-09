@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { Globe, ShieldCheck, Truck } from "lucide-react";
 
+import { Breadcrumb } from "@/components/Breadcrumb";
+
 export default function ShippingPage() {
   const features = [
     {
@@ -30,6 +32,14 @@ export default function ShippingPage() {
       {/* Page Header */}
       <section className="pt-32 pb-20 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <Breadcrumb
+            items={[
+              { label: "Trang chủ", href: "/" },
+              { label: "Giao hàng" }
+            ]}
+            className="mb-8"
+          />
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

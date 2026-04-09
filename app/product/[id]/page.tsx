@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
-  ChevronRight,
   Clock,
   Droplets,
   Minus,
@@ -17,6 +16,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { use } from "react";
 
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { ProductCard } from "@/components/ProductCard";
 import { products } from "@/lib/data";
 
 export default function ProductPage({
@@ -36,7 +37,7 @@ export default function ProductPage({
     <div className="text-slate-900 font-be-vietnam selection:bg-brand/10">
       <main className="pb-24">
         {/* Breadcrumbs & Simple Nav */}
-        <section className="bg-slate-50 py-8">
+        <section className="bg-slate-50 py-4 md:py-8">
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex items-center justify-between mb-8">
               <Link
@@ -46,25 +47,19 @@ export default function ProductPage({
                 <ArrowLeft className="w-3 h-3" /> Quay lại danh mục
               </Link>
             </div>
-            <nav className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400">
-              <Link href="/" className="hover:text-brand transition-colors">
-                Trang chủ
-              </Link>
-              <ChevronRight className="w-3 h-3" />
-              <Link
-                href={`/category/${product.category}`}
-                className="hover:text-brand transition-colors"
-              >
-                {product.categoryName}
-              </Link>
-              <ChevronRight className="w-3 h-3" />
-              <span className="text-brand">{product.name}</span>
-            </nav>
+            <Breadcrumb
+              items={[
+                { label: "Trang chủ", href: "/" },
+                { label: product.categoryName, href: `/category/${product.category}` },
+                { label: product.name }
+              ]}
+            />
+
           </div>
         </section>
 
         {/* Product Hero */}
-        <section className="py-20">
+        <section className="py-12 md:py-20">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-20">
               {/* Image Gallery */}
@@ -151,7 +146,7 @@ export default function ProductPage({
         </section>
 
         {/* Product Details Section */}
-        <section className="py-20 bg-slate-50/50">
+        <section className="py-12 md:py-20 bg-slate-50/50">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-3 gap-20">
               <div className="lg:col-span-2">
@@ -198,7 +193,7 @@ export default function ProductPage({
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
-          <section className="py-32">
+          <section className="py-20 md:py-32">
             <div className="max-w-7xl mx-auto px-6">
               <div className="flex items-center justify-between mb-20">
                 <h2 className="text-3xl font-black text-slate-900">
@@ -212,31 +207,9 @@ export default function ProductPage({
                 </Link>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-12">
+              <div className="grid md:grid-cols-3 gap-8 md:gap-12">
                 {relatedProducts.map((p) => (
-                  <Link key={p.id} href={`/product/${p.id}`} className="group flex flex-col h-full">
-                    <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-10 bg-slate-50 group-hover:bg-slate-100 transition-colors">
-                      <Image
-                        src={p.image}
-                        alt={p.name}
-                        fill
-                        className="object-cover p-8 group-hover:scale-105 transition-transform duration-700"
-                      />
-                      <div className="absolute top-6 left-6">
-                        <span className="px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-lg text-[9px] font-black uppercase tracking-widest text-slate-900 border border-slate-100 shadow-sm">
-                          {p.tag}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex-grow">
-                      <h3 className="text-xl font-black mb-4 text-slate-900 group-hover:text-brand transition-colors leading-snug">
-                        {p.name}
-                      </h3>
-                      <div className="text-lg font-black text-slate-400">
-                        {p.price}
-                      </div>
-                    </div>
-                  </Link>
+                  <ProductCard key={p.id} product={p} />
                 ))}
               </div>
             </div>

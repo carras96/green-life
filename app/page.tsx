@@ -13,6 +13,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
+import { ProductCard } from "@/components/ProductCard";
 import { products } from "@/lib/data";
 
 export default function Home() {
@@ -20,7 +21,7 @@ export default function Home() {
   return (
     <div className="text-slate-900 font-be-vietnam selection:bg-brand/10">
       {/* Minimalist Hero Section */}
-      <section className="relative pt-20 pb-32 overflow-hidden bg-white">
+      <section className="relative pt-12 md:pt-20 pb-20 md:pb-32 overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative z-10">
             <motion.div
@@ -130,9 +131,9 @@ export default function Home() {
       <div className="section-divider"></div>
 
       {/* Features Section */}
-      <section id="solutions" className="py-32 bg-white">
+      <section id="solutions" className="py-20 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-20 items-end mb-24">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-end mb-16 md:mb-24 ">
             <div>
               <span className="text-brand font-black uppercase tracking-[0.3em] text-[10px]">
                 Giải pháp sức khỏe
@@ -148,22 +149,25 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
             {[
               {
                 icon: <Activity className="w-6 h-6 text-orange-500" />,
                 title: "Sức đề kháng",
                 desc: "Tăng cường hệ miễn dịch tự nhiên chống lại các tác nhân gây bệnh từ môi trường.",
+                href: "/category/dinh-duong",
               },
               {
                 icon: <Heart className="w-6 h-6 text-red-500" />,
                 title: "Tim mạch",
                 desc: "Giải pháp hỗ trợ tim mạch và huyết áp tối ưu từ nguồn gốc thực vật tinh khiết.",
+                href: "/category/tim-mach",
               },
               {
                 icon: <Activity className="w-6 h-6 text-blue-500" />,
                 title: "Cân nặng",
                 desc: "Chế độ dinh dưỡng thông minh giúp bạn duy trì vóc dáng lý tưởng và năng lượng.",
+                href: "/category/giam-can",
               },
             ].map((item, index) => (
               <div
@@ -179,12 +183,12 @@ export default function Home() {
                 <p className="text-slate-500 font-medium leading-relaxed mb-8 text-sm">
                   {item.desc}
                 </p>
-                <a
-                  href="#"
+                <Link
+                  href={item.href}
                   className="flex items-center gap-2 text-slate-900 font-black text-xs uppercase tracking-widest hover:text-brand transition-colors"
                 >
                   Tìm hiểu thêm <ArrowRight className="w-3 h-3" />
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -192,9 +196,9 @@ export default function Home() {
       </section>
 
       {/* Product Section */}
-      <section id="products" className="py-32 bg-slate-50/30">
+      <section id="products" className="py-20 md:py-32 bg-slate-50/30">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-baseline mb-24 gap-8 border-b border-slate-100 pb-12">
+          <div className="flex flex-col md:flex-row justify-between items-baseline mb-16 md:mb-24 gap-8 border-b border-slate-100 pb-8 md:pb-12">
             <div className="max-w-2xl">
               <span className="text-slate-400 font-black tracking-widest uppercase text-[10px]">
                 Danh mục sản phẩm
@@ -208,55 +212,18 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-16">
-            {featuredProducts.map((product, index) => (
-              <div key={index} className="group flex flex-col h-full">
-                <Link href={`/product/${product.id}`} className="block">
-                  <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-10 bg-slate-100">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute top-6 left-6">
-                      <span className="px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-lg text-[9px] font-black uppercase tracking-widest text-slate-900 shadow-sm border-thin">
-                        {product.tag}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-                <div className="flex-grow">
-                  <Link href={`/product/${product.id}`}>
-                    <h3 className="text-2xl font-black mb-4 text-slate-900 group-hover:text-brand transition-colors">
-                      {product.name}
-                    </h3>
-                  </Link>
-                </div>
-                <div className="flex items-center justify-between border-t border-slate-50 pt-8 mt-4">
-                  <span className="text-xl font-black text-slate-400">
-                    {product.price}
-                  </span>
-                  <Link href={`/product/${product.id}`}>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="w-12 h-12 bg-white border border-slate-200 text-slate-900 rounded-full flex items-center justify-center shadow-sm group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-all"
-                    >
-                      <ArrowRight className="w-5 h-5" />
-                    </motion.button>
-                  </Link>
-                </div>
-              </div>
+          <div className="grid md:grid-cols-3 gap-8 md:gap-16">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="py-32 bg-white">
+      <section id="testimonials" className="py-20 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-24">
+          <div className="text-center mb-16 md:mb-24">
             <span className="text-brand font-black uppercase tracking-[0.3em] text-[10px]">
               Đánh giá từ khách hàng
             </span>
@@ -329,8 +296,8 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-32 px-6">
-        <div className="max-w-6xl mx-auto bg-brand rounded-[3rem] p-16 md:p-24 text-center text-white relative overflow-hidden">
+      <section className="py-20 md:py-32 px-6">
+        <div className="max-w-6xl mx-auto bg-brand rounded-[3rem] p-12 md:p-24 text-center text-white relative overflow-hidden">
           <div className="relative z-10">
             <h2 className="text-4xl md:text-6xl font-black mb-10 leading-tight">
               Bắt đầu hành trình <br />{" "}

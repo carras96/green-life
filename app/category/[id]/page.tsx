@@ -3,15 +3,14 @@
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  ChevronRight,
   Filter,
-  LayoutGrid,
-  List,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { use } from "react";
 
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { ProductCard } from "@/components/ProductCard";
 import { categories, products } from "@/lib/data";
 
 export default function CategoryPage({
@@ -33,17 +32,17 @@ export default function CategoryPage({
   return (
     <div className="text-slate-900 font-be-vietnam selection:bg-brand/10">
       {/* Category Header */}
-      <section className="bg-slate-50 pt-12 pb-20">
+      <section className="bg-slate-50 pt-8 md:pt-12 pb-12 md:pb-20">
         <div className="max-w-7xl mx-auto px-6">
-          <nav className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 mb-8">
-            <Link href="/" className="hover:text-brand transition-colors">
-              Trang chủ
-            </Link>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-slate-900">Danh mục</span>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-brand">{category.name}</span>
-          </nav>
+          <Breadcrumb
+            items={[
+              { label: "Trang chủ", href: "/" },
+              { label: "Danh mục" },
+              { label: category.name }
+            ]}
+            className="mb-8"
+          />
+
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -74,95 +73,17 @@ export default function CategoryPage({
         </div>
       </section>
 
-      {/* Filter & Listing Bar */}
-      <div className="sticky top-20 z-40 bg-white/95 backdrop-blur-sm border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-900 hover:text-brand transition-colors">
-              <Filter className="w-3 h-3" /> Bộ lọc
-            </button>
-            <div className="hidden sm:flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
-              <span>Sắp xếp:</span>
-              <button className="text-slate-900">Mặc định</button>
-              <button className="hover:text-brand transition-colors">
-                Bán chạy
-              </button>
-              <button className="hover:text-brand transition-colors">
-                Mới nhất
-              </button>
-            </div>
-          </div>
-          <div className="flex items-center gap-4 border-l border-slate-100 pl-4 h-6">
-            <button className="text-brand">
-              <LayoutGrid className="w-4 h-4" />
-            </button>
-            <button className="text-slate-300 hover:text-brand transition-colors">
-              <List className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* Product Grid */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
+      <section className="max-w-7xl mx-auto px-6 py-12 md:py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16">
           {displayProducts.map((product, index) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group flex flex-col h-full"
             >
-              <Link href={`/product/${product.id}`} className="block">
-                <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-10 bg-slate-100">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute top-6 left-6">
-                    <span className="px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-lg text-[9px] font-black uppercase tracking-widest text-slate-900 shadow-sm border-thin">
-                      {product.tag}
-                    </span>
-                  </div>
-                </div>
-              </Link>
-              <div className="flex-grow">
-                <Link href={`/product/${product.id}`}>
-                  <h3 className="text-2xl font-black mb-4 text-slate-900 group-hover:text-brand transition-colors leading-snug">
-                    {product.name}
-                  </h3>
-                </Link>
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex gap-0.5">
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <div
-                        key={s}
-                        className="w-2.5 h-2.5 bg-yellow-400 rounded-full"
-                      ></div>
-                    ))}
-                  </div>
-                  <span className="text-[10px] font-black text-slate-400">
-                    5.0
-                  </span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between border-t border-slate-50 pt-8 mt-4">
-                <span className="text-xl font-black text-slate-900">
-                  {product.price}
-                </span>
-                <Link href={`/product/${product.id}`}>
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="w-12 h-12 bg-white border border-slate-200 text-slate-900 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-all"
-                  >
-                    <ArrowRight className="w-5 h-5" />
-                  </motion.button>
-                </Link>
-              </div>
+              <ProductCard product={product} showRating={true} />
             </motion.div>
           ))}
         </div>

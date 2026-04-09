@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Globe,
@@ -71,13 +72,23 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-3 sm:gap-6">
-            <a
+            <motion.a
+              animate={{
+                scale: [1, 1.04, 1],
+              }}
+              transition={{
+                duration: 1.2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.94 }}
               href="tel:0123456789"
-              className="sm:px-6 px-3 sm:py-3 py-2 bg-brand text-white rounded-lg font-bold text-sm hover:bg-brand-deep transition-all shadow-sm flex items-center gap-2 whitespace-nowrap"
+              className="sm:px-6 px-3 sm:py-3 py-2 bg-brand text-white rounded-lg font-bold text-sm hover:bg-brand-deep transition-all shadow-md shadow-brand/25 flex items-center gap-2 whitespace-nowrap"
             >
               <Phone className="w-4 h-4" />
               <span className="hidden sm:inline">Tư vấn ngay</span>
-            </a>
+            </motion.a>
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger>
                 <div

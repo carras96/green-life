@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { Clock, FileCheck, RefreshCcw, ShieldCheck } from "lucide-react";
 
+import { Breadcrumb } from "@/components/Breadcrumb";
+
 export default function ReturnsPage() {
   const steps = [
     {
@@ -28,8 +30,16 @@ export default function ReturnsPage() {
   return (
     <div className="bg-white font-be-vietnam min-h-screen">
       {/* Page Header */}
-      <section className="pt-32 pb-20 bg-brand-soft/10 relative overflow-hidden">
+      <section className="pt-32 pb-20 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <Breadcrumb
+            items={[
+              { label: "Trang chủ", href: "/" },
+              { label: "Đổi trả" }
+            ]}
+            className="mb-8"
+          />
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

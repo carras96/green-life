@@ -34,7 +34,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-white border-t border-slate-100 py-16 md:py-32">
+    <footer className="bg-white border-t border-slate-100 pt-16 pb-4 md:pt-32 md:pb-8">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-20">
         <div className="col-span-2 lg:col-span-1">
           <Link href="/" className="flex items-center gap-3 mb-6 md:mb-8">
@@ -96,7 +96,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 mt-16 md:mt-32 pt-12 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center md:text-left">
+      <div className="max-w-7xl mx-auto px-6 mt-8 md:mt-16 pt-12 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center md:text-left">
         <div>© 2026 GREENLIFE ACADEMY. ALL RIGHTS RESERVED.</div>
         <div className="flex items-center gap-4">
           <a href="#" className="hover:text-slate-900 transition-colors">

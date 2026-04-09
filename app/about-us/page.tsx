@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Leaf, ShieldCheck, Target, Users } from "lucide-react";
 import Image from "next/image";
 
+import { Breadcrumb } from "@/components/Breadcrumb";
+
 export default function AboutUsPage() {
   const values = [
     {
@@ -30,43 +32,53 @@ export default function AboutUsPage() {
     <div className="bg-white font-be-vietnam min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-32 pb-40 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-soft border border-brand/10 text-brand text-[10px] font-black tracking-[0.2em] uppercase mb-8">
-              <Leaf className="w-3 h-3" /> Câu chuyện thương hiệu
-            </div>
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8">
-              Khởi nguồn từ <br />
-              <span className="text-brand">Lối sống xanh</span>
-            </h1>
-            <p className="text-lg md:text-xl text-slate-500 mb-12 leading-relaxed font-medium">
-              GreenLife ra đời với tâm thế của những người trẻ khao khát mang
-              lại giá trị thực cho sức khỏe cộng đồng. Chúng tôi tin rằng, mỗi
-              cá nhân đều xứng đáng có một cơ thể tràn đầy năng lượng và tinh
-              thần minh mẫn.
-            </p>
-          </motion.div>
+        <div className="max-w-7xl mx-auto px-6 items-center">
+          <Breadcrumb
+            items={[
+              { label: "Trang chủ", href: "/" },
+              { label: "Về chúng tôi" }
+            ]}
+            className="mb-8"
+          />
+          <div className="grid lg:grid-cols-2 gap-20">
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="relative aspect-square"
-          >
-            <div className="absolute inset-0 bg-slate-50 rounded-[4rem] rotate-3"></div>
-            <div className="absolute inset-4 rounded-[3.5rem] overflow-hidden shadow-2xl">
-              <Image
-                src="/about/hero.png"
-                alt="GreenLife Team"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-soft border border-brand/10 text-brand text-[10px] font-black tracking-[0.2em] uppercase mb-8">
+                <Leaf className="w-3 h-3" /> Câu chuyện thương hiệu
+              </div>
+              <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8">
+                Khởi nguồn từ <br />
+                <span className="text-brand">Lối sống xanh</span>
+              </h1>
+              <p className="text-lg md:text-xl text-slate-500 mb-12 leading-relaxed font-medium">
+                GreenLife ra đời với tâm thế của những người trẻ khao khát mang
+                lại giá trị thực cho sức khỏe cộng đồng. Chúng tôi tin rằng, mỗi
+                cá nhân đều xứng đáng có một cơ thể tràn đầy năng lượng và tinh
+                thần minh mẫn.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+              className="relative aspect-square"
+            >
+              <div className="absolute inset-0 bg-slate-50 rounded-[4rem] rotate-3"></div>
+              <div className="absolute inset-4 rounded-[3.5rem] overflow-hidden shadow-2xl">
+                <Image
+                  src="/about/hero.png"
+                  alt="GreenLife Team"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
