@@ -114,7 +114,7 @@ export default function ProductPage({
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                    <div className="flex items-center bg-slate-100 rounded-2xl px-6 py-4">
+                    <div className="flex items-center justify-center bg-slate-100 rounded-2xl px-6 py-4">
                       <button className="p-1 hover:text-brand transition-colors"><Minus className="w-4 h-4" /></button>
                       <span className="w-12 text-center font-black">1</span>
                       <button className="p-1 hover:text-brand transition-colors"><Plus className="w-4 h-4" /></button>

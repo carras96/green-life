@@ -15,9 +15,7 @@ import { useState } from "react";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
@@ -111,15 +109,9 @@ export default function Header() {
                       GreenLife
                     </span>
                   </div>
-                  <SheetTitle className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 pt-8">
-                    Menu điều hướng
-                  </SheetTitle>
-                  <SheetDescription className="sr-only">
-                    Menu điều hướng dành cho thiết bị di động của GreenLife.
-                  </SheetDescription>
                 </SheetHeader>
 
-                <nav className="flex flex-col gap-2 mt-8 px-4">
+                <nav className="flex flex-col gap-2 px-4 flex-1 overflow-y-auto pb-8">
                   {navItems.map((item) => (
                     <Link
                       key={item.name}
@@ -132,7 +124,7 @@ export default function Header() {
                     </Link>
                   ))}
 
-                  <div className="mt-12">
+                  <div className="space-y-2">
                     <a
                       href="tel:0123456789"
                       className="flex items-center gap-4 p-5 bg-slate-50 rounded-2xl group hover:bg-brand transition-all duration-300"
@@ -149,20 +141,18 @@ export default function Header() {
                         </div>
                       </div>
                     </a>
+
+                    <div className="p-6 bg-brand/5 rounded-2xl border border-brand/10">
+                      <div className="text-[10px] font-black text-brand uppercase tracking-widest mb-2">
+                        Cam kết
+                      </div>
+                      <div className="text-xs font-medium text-slate-500 leading-relaxed">
+                        100% sản phẩm Amway Nutrilite chính hãng, có đầy đủ hóa
+                        đơn chứng từ.
+                      </div>
+                    </div>
                   </div>
                 </nav>
-
-                <div className="absolute bottom-8 left-6 right-6">
-                  <div className="p-6 bg-brand/5 rounded-2xl border border-brand/10">
-                    <div className="text-[10px] font-black text-brand uppercase tracking-widest mb-2">
-                      Cam kết
-                    </div>
-                    <div className="text-xs font-medium text-slate-500 leading-relaxed">
-                      100% sản phẩm Amway Nutrilite chính hãng, có đầy đủ hóa
-                      đơn chứng từ.
-                    </div>
-                  </div>
-                </div>
               </SheetContent>
             </Sheet>
           </div>
