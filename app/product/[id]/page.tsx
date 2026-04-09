@@ -1,24 +1,21 @@
 "use client";
 
-import { use } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
   ChevronRight,
-  ShieldCheck,
-  Zap,
-  Leaf,
-  Award,
   Clock,
   Droplets,
-  Star,
-  Plus,
   Minus,
+  Plus,
+  ShieldCheck,
   ShoppingCart,
+  Star,
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { use } from "react";
 
 import { products } from "@/lib/data";
 
@@ -108,7 +105,7 @@ export default function ProductPage({
                       (24 Đánh giá)
                     </span>
                   </div>
-                  
+
                   <h1 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight mb-6">
                     {product.name}
                   </h1>
@@ -216,7 +213,7 @@ export default function ProductPage({
               </div>
 
               <div className="grid md:grid-cols-3 gap-12">
-                {relatedProducts.map((p, i) => (
+                {relatedProducts.map((p) => (
                   <Link key={p.id} href={`/product/${p.id}`} className="group flex flex-col h-full">
                     <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-10 bg-slate-50 group-hover:bg-slate-100 transition-colors">
                       <Image

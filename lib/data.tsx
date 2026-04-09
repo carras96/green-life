@@ -1,13 +1,13 @@
-import React from "react";
 import {
-  ShieldCheck,
-  Zap,
-  Leaf,
   Award,
   Clock,
   Droplets,
+  Leaf,
+  ShieldCheck,
   Star,
+  Zap,
 } from "lucide-react";
+import React from "react";
 
 export interface Category {
   name: string;

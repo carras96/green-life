@@ -1,16 +1,16 @@
 "use client";
 
-import { useState } from "react";
-
-import Link from "next/link";
 import {
+  ArrowRight,
+  Globe,
   Leaf,
   Menu,
   Phone,
-  Globe,
   ShieldCheck,
-  ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+
 import {
   Sheet,
   SheetContent,
@@ -26,7 +26,7 @@ export default function Header() {
     { name: "Giải pháp", href: "/#solutions" },
     { name: "Sản phẩm", href: "/#products" },
     { name: "Đánh giá", href: "/#testimonials" },
-    { name: "Về chúng tôi", href: "/#about" },
+    { name: "Về chúng tôi", href: "/about-us" },
   ];
 
   return (
@@ -58,7 +58,7 @@ export default function Header() {
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-10 text-sm font-bold text-slate-500 uppercase tracking-wider">
+          <nav className="hidden lg:flex items-center gap-10 text-sm font-bold text-slate-500 uppercase tracking-wider">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -81,7 +81,7 @@ export default function Header() {
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger>
                 <div
-                  className="md:hidden p-2 text-slate-600 hover:text-brand transition-colors cursor-pointer"
+                  className="lg:hidden p-2 text-slate-600 hover:text-brand transition-colors cursor-pointer"
                   aria-label="Open menu"
                 >
                   <Menu className="w-6 h-6" />

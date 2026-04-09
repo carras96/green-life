@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { Leaf } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   const footerSections = [
@@ -18,10 +18,10 @@ export default function Footer() {
     {
       title: "Hỗ trợ",
       links: [
-        { name: "Giao hàng", href: "#" },
-        { name: "Đổi trả", href: "#" },
-        { name: "Chính sách", href: "#" },
-        { name: "Liên hệ", href: "#" },
+        { name: "Giao hàng", href: "/shipping" },
+        { name: "Đổi trả", href: "/returns" },
+        { name: "Chính sách", href: "/policy" },
+        { name: "Liên hệ", href: "/contact" },
       ],
     },
   ];

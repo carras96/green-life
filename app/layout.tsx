@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
-import { Be_Vietnam_Pro, Inter, Geist } from "next/font/google";
 import "./globals.css";
+
+import type { Metadata } from "next";
+import { Be_Vietnam_Pro, Geist, Inter } from "next/font/google";
+
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 const beVietnam = Be_Vietnam_Pro({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -21,8 +23,8 @@ export const metadata: Metadata = {
   description: "Sức khỏe tối ưu từ thiên nhiên",
 };
 
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 
 export default function RootLayout({
