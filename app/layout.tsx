@@ -26,6 +26,8 @@ export const metadata: Metadata = {
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
+import { Toaster } from "@/components/ui/sonner";
+import { CartProvider } from "@/context/CartContext";
 
 export default function RootLayout({
   children,
@@ -38,10 +40,13 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", beVietnam.variable, inter.variable, "font-sans", geist.variable)}
     >
       <body className="min-h-full flex flex-col">
-        <ScrollToTop />
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <CartProvider>
+          <ScrollToTop />
+          <Toaster />
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

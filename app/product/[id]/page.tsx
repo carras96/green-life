@@ -15,9 +15,12 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { use } from "react";
+import { useState } from "react";
+import { toast } from "sonner";
 
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ProductCard } from "@/components/ProductCard";
+import { useCart } from "@/context/CartContext";
 import { products } from "@/lib/data";
 
 export default function ProductPage({
@@ -26,7 +29,18 @@ export default function ProductPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
+  const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
+
   const product = products.find((p) => p.id === parseInt(id)) || products[0];
+
+  const handleAddToCart = () => {
+    addToCart(product.id.toString(), quantity);
+    toast.success(`Đã thêm ${quantity} ${product.name} vào giỏ hàng!`);
+  };
+
+  const incrementQuantity = () => setQuantity((prev) => prev + 1);
+  const decrementQuantity = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
   // Related products from the same category
   const relatedProducts = products
@@ -115,11 +129,24 @@ export default function ProductPage({
 
                   <div className="flex flex-col sm:flex-row gap-4 mb-12">
                     <div className="flex items-center justify-center bg-slate-100 rounded-2xl px-6 py-4">
-                      <button className="p-1 hover:text-brand transition-colors"><Minus className="w-4 h-4" /></button>
-                      <span className="w-12 text-center font-black">1</span>
-                      <button className="p-1 hover:text-brand transition-colors"><Plus className="w-4 h-4" /></button>
+                      <button
+                        onClick={decrementQuantity}
+                        className="p-1 hover:text-brand transition-colors"
+                      >
+                        <Minus className="w-4 h-4" />
+                      </button>
+                      <span className="w-12 text-center font-black">{quantity}</span>
+                      <button
+                        onClick={incrementQuantity}
+                        className="p-1 hover:text-brand transition-colors"
+                      >
+                        <Plus className="w-4 h-4" />
+                      </button>
                     </div>
-                    <button className="flex-grow px-10 py-5 bg-slate-900 text-white rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/10">
+                    <button
+                      onClick={handleAddToCart}
+                      className="flex-grow px-10 py-5 bg-slate-900 text-white rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/10"
+                    >
                       <ShoppingCart className="w-5 h-5" /> Thêm vào giỏ hàng
                     </button>
                   </div>

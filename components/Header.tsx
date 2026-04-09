@@ -8,6 +8,7 @@ import {
   Menu,
   Phone,
   ShieldCheck,
+  ShoppingCart,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -18,6 +19,7 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useCart } from "@/context/CartContext";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -27,6 +29,7 @@ export default function Header() {
     { name: "Đánh giá", href: "/#testimonials" },
     { name: "Về chúng tôi", href: "/about-us" },
   ];
+  const { totalItems } = useCart();
 
   return (
     <>
@@ -70,6 +73,14 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-3 sm:gap-6">
+            <Link href="/cart" className="relative p-2 text-slate-600 hover:text-brand transition-colors">
+              <ShoppingCart className="w-6 h-6" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 bg-brand text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-sm">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
             <motion.a
               animate={{
                 scale: [1, 1.04, 1],
@@ -82,7 +93,7 @@ export default function Header() {
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.94 }}
               href="tel:0123456789"
-              className="sm:px-6 px-3 sm:py-3 py-2 bg-brand text-white rounded-lg font-bold text-sm hover:bg-brand-deep transition-all shadow-md shadow-brand/25 flex items-center gap-2 whitespace-nowrap"
+              className="sm:px-6 px-3 sm:py-3 py-2 bg-brand text-white rounded-lg font-bold text-sm hover:bg-brand-deep transition-all shadow-md shadow-brand/25 flex items-center gap-2 whitespace-nowrap hidden sm:flex"
             >
               <Phone className="w-4 h-4" />
               <span className="hidden sm:inline">Tư vấn ngay</span>
@@ -123,6 +134,22 @@ export default function Header() {
                       <ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-brand" />
                     </Link>
                   ))}
+
+                  <Link
+                    href="/cart"
+                    onClick={() => setOpen(false)}
+                    className="group flex items-center justify-between p-5 bg-slate-50 hover:bg-brand/5 rounded-2xl text-base font-bold text-slate-600 hover:text-brand transition-all duration-300"
+                  >
+                    <div className="flex items-center gap-3">
+                      Giỏ hàng
+                      {totalItems > 0 && (
+                        <span className="bg-brand text-white text-[10px] px-2 py-0.5 rounded-full">
+                          {totalItems}
+                        </span>
+                      )}
+                    </div>
+                    <ShoppingCart className="w-5 h-5 text-brand" />
+                  </Link>
 
                   <div className="space-y-2">
                     <a
