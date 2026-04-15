@@ -44,11 +44,10 @@ export default function BillPage() {
           {/* Invoice Header */}
           <div className="flex justify-between items-start my-6">
             <div className="text-left">
-              <h2 className="text-2xl font-bold text-green-600 uppercase tracking-tight">Green Life</h2>
+              <h2 className="text-2xl font-bold text-green-600 uppercase tracking-tight">NPP AW : 7027314499</h2>
               <div className="mt-2 text-gray-600 text-sm space-y-1">
-                <p>Địa chỉ: .......................................................................................</p>
-                <p>Điện thoại: .................................................................................</p>
-                <p>MST: ............................................................................................</p>
+                <p>Địa chỉ: TDP Ninh Khánh, phường Nếnh, Bắc Ninh</p>
+                <p>Điện thoại: 0971078475</p>
               </div>
             </div>
             <Image
@@ -112,7 +111,6 @@ export default function BillPage() {
                 <tr className="bg-green-600 text-white">
                   <th className="py-3 px-4 font-semibold text-xs uppercase tracking-wider w-12 text-center border-r border-green-500">STT</th>
                   <th className="py-3 px-4 font-semibold text-xs uppercase tracking-wider border-r text-center border-green-500">Tên hàng hóa</th>
-                  <th className="py-3 px-4 font-semibold text-xs uppercase tracking-wider w-24 text-center border-r border-green-500">ĐVT</th>
                   <th className="py-3 px-4 font-semibold text-xs uppercase tracking-wider w-24 text-center border-r border-green-500">Số lượng</th>
                   <th className="py-3 px-4 font-semibold text-xs uppercase tracking-wider w-32 text-center border-r border-green-500">Đơn giá</th>
                   <th className="py-3 px-4 font-semibold text-xs uppercase tracking-wider w-40 text-center">Thành tiền</th>
@@ -124,7 +122,6 @@ export default function BillPage() {
                   <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     <td className="py-3 px-4 text-center border-r border-gray-200 text-sm text-gray-500">{i + 1}</td>
                     <td className="py-3 px-4 border-r border-gray-200"></td>
-                    <td className="py-3 px-4 border-r border-gray-200 text-center"></td>
                     <td className="py-3 px-4 border-r border-gray-200 text-center"></td>
                     <td className="py-3 px-4 border-r border-gray-200 text-right"></td>
                     <td className="py-3 px-4 text-right"></td>
