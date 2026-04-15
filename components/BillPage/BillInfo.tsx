@@ -1,21 +1,11 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 import { Input } from "@/components/ui/input";
 
 export default function BillInfo() {
-    // Tự khởi tạo form riêng, không phụ thuộc vào cha
-    const { register } = useForm({
-        defaultValues: {
-            customerName: "",
-            phoneNumber: "",
-            address: "",
-            invoiceNumber: new Date().getTime().toString(),
-            invoiceDate: new Date().toISOString().split("T")[0],
-            paymentMethod: "Chuyển khoản",
-        },
-    });
+    const { register } = useFormContext();
 
     return (
         <div className="grid grid-cols-2 gap-8 mb-6 bg-white p-4">

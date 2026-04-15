@@ -1,31 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { Controller, useFieldArray, useForm } from "react-hook-form";
+import { Controller, useFieldArray, useFormContext } from "react-hook-form";
 import { NumericFormat } from "react-number-format";
 
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export default function BillTable() {
-    const { register, control, watch } = useForm({
-        defaultValues: {
-            items: Array.from({ length: 10 }).map(() => ({
-                name: "",
-                quantity: "" as any, // Để trống ban đầu
-                price: "" as any,    // Để trống ban đầu
-            })),
-            shippingFee: "" as any,  // Để trống ban đầu
-        },
-    });
+    const { register, control, watch } = useFormContext();
 
-    const { fields } = useFieldArray({ control, name: "items" });
+    const { fields } = useFieldArray({ control, name: "items" })
     const watchedItems = watch("items");
 
-    // Tính tổng tiền hàng (Chỉ cộng khi có giá trị)
-    const subtotal = watchedItems.reduce((acc, item) => {
-        const qty = parseFloat(item.quantity) || 0;
-        const price = parseFloat(item.price) || 0;
+    const subtotal = (watchedItems || []).reduce((acc: number, item: any) => {
+        const qty = parseFloat(item?.quantity) || 0;
+        const price = parseFloat(item?.price) || 0;
         return acc + (qty * price);
     }, 0);
 
@@ -33,17 +23,18 @@ export default function BillTable() {
     const totalPayment = subtotal + shippingFee;
 
     return (
-        <div className="p-4">
+        <div>
             <form className="space-y-4 mb-6">
-                <div className="rounded-lg border border-gray-200 overflow-hidden">
-                    <Table>
+                <div className="overflow-hidden border rounded-lg border-gray-200">
+                    <Table className="w-full table-fixed border-collapse">
                         <TableHeader>
                             <TableRow className="bg-green-600 hover:bg-green-600 border-none">
-                                <TableHead className="w-12 text-center text-white border-r border-green-500 uppercase text-[10px] font-bold">STT</TableHead>
-                                <TableHead className="text-center text-white border-r border-green-500 uppercase text-[10px] font-bold">Tên hàng hóa</TableHead>
-                                <TableHead className="w-24 text-center text-white border-r border-green-500 uppercase text-[10px] font-bold">SL</TableHead>
-                                <TableHead className="w-32 text-center text-white border-r border-green-500 uppercase text-[10px] font-bold">Đơn giá</TableHead>
-                                <TableHead className="w-40 text-center text-white uppercase text-[10px] font-bold">Thành tiền</TableHead>
+                                {/* Cố định width từng cột bằng pixel hoặc % cụ thể */}
+                                <TableHead className="w-[50px] text-center text-white border-r border-green-500 uppercase text-[10px] font-bold">STT</TableHead>
+                                <TableHead className="w-[250px] text-center text-white border-r border-green-500 uppercase text-[10px] font-bold">Tên hàng hóa</TableHead>
+                                <TableHead className="w-[80px] text-center text-white border-r border-green-500 uppercase text-[10px] font-bold">SL</TableHead>
+                                <TableHead className="w-[120px] text-center text-white border-r border-green-500 uppercase text-[10px] font-bold">Đơn giá</TableHead>
+                                <TableHead className="w-[150px] text-center text-white uppercase text-[10px] font-bold">Thành tiền</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -128,7 +119,7 @@ export default function BillTable() {
                             </div>
                         </div>
 
-                        <div className="flex justify-between font-bold text-gray-900 text-lg pt-3 border-t border-gray-100">
+                        <div className="flex justify-between font-bold text-gray-900 text-lg pt-3">
                             <span className="uppercase tracking-tight">Tổng thanh toán:</span>
                             <span className="text-green-700 font-mono">
                                 {totalPayment > 0 ? totalPayment.toLocaleString() : "0"} <span className="text-sm underline">đ</span>
