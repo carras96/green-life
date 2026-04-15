@@ -7,7 +7,7 @@
 @theme inline {
   --color-background: #ffffff;
   --color-foreground: #111827;
-  --color-brand: #00A859;
+  --color-brand: #00a859;
   --color-brand-soft: #f0fdf4;
   --color-slate-50: #f8fafc;
   --color-slate-100: #f1f5f9;
@@ -73,16 +73,21 @@ body {
 
 /* Subtle Hover */
 .hover-lift {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .hover-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
 }
 
 /* Typography refinement */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   letter-spacing: -0.02em;
 }
 
