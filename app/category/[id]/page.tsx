@@ -1,33 +1,30 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Filter,
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { use } from "react";
+import { motion } from 'framer-motion'
+import { ArrowRight, Filter } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { use } from 'react'
 
-import { Breadcrumb } from "@/components/Breadcrumb";
-import { ProductCard } from "@/components/ProductCard";
-import { categories, products } from "@/lib/data";
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { ProductCard } from '@/components/ProductCard'
+import { categories, products } from '@/lib/data'
 
 export default function CategoryPage({
-  params,
+  params
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string }>
 }) {
-  const { id } = use(params);
+  const { id } = use(params)
   const category = categories[id as keyof typeof categories] || {
-    name: "Tất cả sản phẩm",
-    description: "Khám phá danh mục sản phẩm chính hãng từ Nutrilite.",
-    image: "/hero.png",
-  };
+    name: 'Tất cả sản phẩm',
+    description: 'Khám phá danh mục sản phẩm chính hãng từ Nutrilite.',
+    image: '/hero.png'
+  }
 
   const displayProducts = categories[id as keyof typeof categories]
     ? products.filter((p) => p.category === id)
-    : products;
+    : products
 
   return (
     <div className="text-slate-900 font-be-vietnam selection:bg-brand/10">
@@ -36,13 +33,12 @@ export default function CategoryPage({
         <div className="max-w-7xl mx-auto px-6">
           <Breadcrumb
             items={[
-              { label: "Trang chủ", href: "/" },
-              { label: "Danh mục" },
+              { label: 'Trang chủ', href: '/' },
+              { label: 'Danh mục' },
               { label: category.name }
             ]}
             className="mb-8"
           />
-
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -109,5 +105,5 @@ export default function CategoryPage({
         )}
       </section>
     </div>
-  );
+  )
 }

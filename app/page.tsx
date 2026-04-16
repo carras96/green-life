@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 import {
   Activity,
   ArrowRight,
@@ -8,16 +8,16 @@ import {
   Heart,
   ShieldCheck,
   Star,
-  Zap,
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+  Zap
+} from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
 
-import { ProductCard } from "@/components/ProductCard";
-import { products } from "@/lib/data";
+import { ProductCard } from '@/components/ProductCard'
+import { products } from '@/lib/data'
 
 export default function Home() {
-  const featuredProducts = products.slice(0, 3);
+  const featuredProducts = products.slice(0, 3)
   return (
     <div className="text-slate-900 font-be-vietnam selection:bg-brand/10">
       {/* Minimalist Hero Section */}
@@ -64,18 +64,14 @@ export default function Home() {
 
               <div className="mt-16 flex items-center gap-12 border-t border-slate-50 pt-12">
                 <div>
-                  <div className="text-3xl font-black text-slate-900">
-                    10k+
-                  </div>
+                  <div className="text-3xl font-black text-slate-900">10k+</div>
                   <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest pt-1">
                     Khách hàng tin tưởng
                   </div>
                 </div>
                 <div className="w-px h-10 bg-slate-100"></div>
                 <div>
-                  <div className="text-3xl font-black text-slate-900">
-                    99%
-                  </div>
+                  <div className="text-3xl font-black text-slate-900">99%</div>
                   <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest pt-1">
                     Mức độ hài lòng
                   </div>
@@ -87,7 +83,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1, ease: 'easeOut' }}
             className="relative aspect-square"
           >
             <div className="absolute inset-0 bg-slate-50 rounded-[4rem] -rotate-3 transition-transform hover:rotate-0 duration-700"></div>
@@ -106,7 +102,7 @@ export default function Home() {
               transition={{
                 duration: 4,
                 repeat: Infinity,
-                ease: "easeInOut",
+                ease: 'easeInOut'
               }}
               className="absolute -bottom-8 -right-8 p-8 bg-white rounded-3xl shadow-2xl border-thin hidden lg:block"
             >
@@ -139,13 +135,13 @@ export default function Home() {
                 Giải pháp sức khỏe
               </span>
               <h2 className="text-4xl md:text-5xl font-black mt-6 mb-8 text-slate-900 leading-tight">
-                Chúng tôi chú trọng vào <br />{" "}
+                Chúng tôi chú trọng vào <br />{' '}
                 <span className="text-slate-400">chất lượng cuộc sống</span>
               </h2>
             </div>
             <p className="text-slate-500 text-lg font-medium leading-relaxed max-w-md pb-2">
-              GreenLife không chỉ bán sản phẩm, chúng tôi cung cấp lộ trình
-              sống lành mạnh được cá nhân hóa bởi các chuyên gia dinh dưỡng.
+              GreenLife không chỉ bán sản phẩm, chúng tôi cung cấp lộ trình sống
+              lành mạnh được cá nhân hóa bởi các chuyên gia dinh dưỡng.
             </p>
           </div>
 
@@ -153,22 +149,22 @@ export default function Home() {
             {[
               {
                 icon: <Activity className="w-6 h-6 text-orange-500" />,
-                title: "Sức đề kháng",
-                desc: "Tăng cường hệ miễn dịch tự nhiên chống lại các tác nhân gây bệnh từ môi trường.",
-                href: "/category/dinh-duong",
+                title: 'Sức đề kháng',
+                desc: 'Tăng cường hệ miễn dịch tự nhiên chống lại các tác nhân gây bệnh từ môi trường.',
+                href: '/category/dinh-duong'
               },
               {
                 icon: <Heart className="w-6 h-6 text-red-500" />,
-                title: "Tim mạch",
-                desc: "Giải pháp hỗ trợ tim mạch và huyết áp tối ưu từ nguồn gốc thực vật tinh khiết.",
-                href: "/category/tim-mach",
+                title: 'Tim mạch',
+                desc: 'Giải pháp hỗ trợ tim mạch và huyết áp tối ưu từ nguồn gốc thực vật tinh khiết.',
+                href: '/category/tim-mach'
               },
               {
                 icon: <Activity className="w-6 h-6 text-blue-500" />,
-                title: "Cân nặng",
-                desc: "Chế độ dinh dưỡng thông minh giúp bạn duy trì vóc dáng lý tưởng và năng lượng.",
-                href: "/category/giam-can",
-              },
+                title: 'Cân nặng',
+                desc: 'Chế độ dinh dưỡng thông minh giúp bạn duy trì vóc dáng lý tưởng và năng lượng.',
+                href: '/category/giam-can'
+              }
             ].map((item, index) => (
               <div
                 key={index}
@@ -207,7 +203,10 @@ export default function Home() {
                 Dòng sản phẩm <span className="text-brand">chủ lực</span>
               </h2>
             </div>
-            <Link href="/category/all" className="text-slate-900 font-black text-xs uppercase tracking-[0.2em] flex items-center gap-4 hover:gap-6 transition-all">
+            <Link
+              href="/category/all"
+              className="text-slate-900 font-black text-xs uppercase tracking-[0.2em] flex items-center gap-4 hover:gap-6 transition-all"
+            >
               Xem tất cả sản phẩm <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -246,23 +245,23 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                name: "Chị Minh Thư",
-                role: "Nhân viên văn phòng",
+                name: 'Chị Minh Thư',
+                role: 'Nhân viên văn phòng',
                 comment:
-                  "Cơ thể dẻo dai hơn hẳn từ khi dùng Protein của Nutrilite. Giờ đây tôi không còn cảm thấy mệt mỏi vào cuối ngày làm việc nữa.",
+                  'Cơ thể dẻo dai hơn hẳn từ khi dùng Protein của Nutrilite. Giờ đây tôi không còn cảm thấy mệt mỏi vào cuối ngày làm việc nữa.'
               },
               {
-                name: "Anh Hoàng Nam",
-                role: "Huấn luyện viên",
+                name: 'Anh Hoàng Nam',
+                role: 'Huấn luyện viên',
                 comment:
-                  "Sản phẩm Amway tại GreenLife luôn đảm bảo chính hãng. Đây là lựa chọn hàng đầu của tôi khi giới thiệu cho học viên mình.",
+                  'Sản phẩm Amway tại GreenLife luôn đảm bảo chính hãng. Đây là lựa chọn hàng đầu của tôi khi giới thiệu cho học viên mình.'
               },
               {
-                name: "Cô Ngọc Lan",
-                role: "Nội trợ",
+                name: 'Cô Ngọc Lan',
+                role: 'Nội trợ',
                 comment:
-                  "Bio C Plus giúp gia đình tôi tăng cường sức đề kháng rõ rệt qua mùa dịch. Đội ngũ GreenLife tư vấn rất chu đáo.",
-              },
+                  'Bio C Plus giúp gia đình tôi tăng cường sức đề kháng rõ rệt qua mùa dịch. Đội ngũ GreenLife tư vấn rất chu đáo.'
+              }
             ].map((feedback, index) => (
               <div
                 key={index}
@@ -297,10 +296,10 @@ export default function Home() {
 
       {/* Final CTA Section */}
       <section className="py-20 md:py-32 px-6">
-        <div className="max-w-6xl mx-auto bg-brand rounded-[3rem] p-12 md:p-24 text-center text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto bg-brand rounded-[3rem] p-12 md:p-24 text-center text-white relative overflow-hidden">
           <div className="relative z-10">
             <h2 className="text-4xl md:text-6xl font-black mb-10 leading-tight">
-              Bắt đầu hành trình <br />{" "}
+              Bắt đầu hành trình <br />{' '}
               <span className="text-white/90">sống khỏe</span> hôm nay
             </h2>
             <p className="text-white/70 text-lg font-medium mb-16 max-w-xl mx-auto">
@@ -322,5 +321,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  );
+  )
 }

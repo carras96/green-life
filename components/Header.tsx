@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 import {
   ArrowRight,
   Globe,
@@ -8,28 +8,29 @@ import {
   Menu,
   Phone,
   ShieldCheck,
-  ShoppingCart,
-} from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
+  ShoppingCart
+} from 'lucide-react'
+import Link from 'next/link'
+import { useState } from 'react'
 
 import {
   Sheet,
   SheetContent,
   SheetHeader,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { useCart } from "@/context/CartContext";
+  SheetTrigger
+} from '@/components/ui/sheet'
+import { PHONE_NUMBER } from '@/constants/common'
+import { useCart } from '@/context/CartContext'
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   const navItems = [
-    { name: "Giải pháp", href: "/#solutions" },
-    { name: "Sản phẩm", href: "/#products" },
-    { name: "Đánh giá", href: "/#testimonials" },
-    { name: "Về chúng tôi", href: "/about-us" },
-  ];
-  const { totalItems } = useCart();
+    { name: 'Giải pháp', href: '/#solutions' },
+    { name: 'Sản phẩm', href: '/#products' },
+    { name: 'Đánh giá', href: '/#testimonials' },
+    { name: 'Về chúng tôi', href: '/about-us' }
+  ]
+  const { totalItems } = useCart()
 
   return (
     <>
@@ -44,7 +45,7 @@ export default function Header() {
               <ShieldCheck className="w-3 h-3" /> Cam kết 100% chính hãng
             </span>
           </div>
-          <div>Hỗ trợ khách hàng: 0123 456 789</div>
+          <div>Hỗ trợ khách hàng: {PHONE_NUMBER}</div>
         </div>
       </div>
 
@@ -73,7 +74,10 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-3 sm:gap-6">
-            <Link href="/cart" className="relative p-2 text-slate-600 hover:text-brand transition-colors">
+            <Link
+              href="/cart"
+              className="relative p-2 text-slate-600 hover:text-brand transition-colors"
+            >
               <ShoppingCart className="w-6 h-6" />
               {totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 bg-brand text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-sm">
@@ -83,16 +87,17 @@ export default function Header() {
             </Link>
             <motion.a
               animate={{
-                scale: [1, 1.04, 1],
+                scale: [1, 1.04, 1]
               }}
               transition={{
                 duration: 1.2,
                 repeat: Infinity,
-                ease: "easeInOut",
+                ease: 'easeInOut'
               }}
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.94 }}
-              href="tel:0123456789"
+              href={`https://zalo.me/${PHONE_NUMBER}`}
+              target="_blank"
               className="sm:px-6 px-3 sm:py-3 py-2 bg-brand text-white rounded-lg font-bold text-sm hover:bg-brand-deep transition-all shadow-md shadow-brand/25 flex items-center gap-2 whitespace-nowrap hidden sm:flex"
             >
               <Phone className="w-4 h-4" />
@@ -153,7 +158,7 @@ export default function Header() {
 
                   <div className="space-y-2">
                     <a
-                      href="tel:0123456789"
+                      href={`tel:${PHONE_NUMBER}`}
                       className="flex items-center gap-4 p-5 bg-slate-50 rounded-2xl group hover:bg-brand transition-all duration-300"
                     >
                       <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm group-hover:scale-90 transition-transform">
@@ -164,7 +169,7 @@ export default function Header() {
                           Hỗ trợ 24/7
                         </div>
                         <div className="text-sm font-black text-slate-900 group-hover:text-white">
-                          0123 456 789
+                          {PHONE_NUMBER}
                         </div>
                       </div>
                     </a>
@@ -186,5 +191,5 @@ export default function Header() {
         </div>
       </header>
     </>
-  );
+  )
 }

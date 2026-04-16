@@ -1,37 +1,37 @@
-"use client";
+'use client'
 
-import { Leaf } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { Leaf } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Footer() {
   const footerSections = [
     {
-      title: "Sản phẩm",
+      title: 'Sản phẩm',
       links: [
-        { name: "Dinh dưỡng", href: "/category/dinh-duong" },
-        { name: "Giảm cân", href: "/category/giam-can" },
-        { name: "Tim mạch", href: "/category/tim-mach" },
-        { name: "Tiêu hóa", href: "/category/tieu-hoa" },
-      ],
+        { name: 'Dinh dưỡng', href: '/category/dinh-duong' },
+        { name: 'Giảm cân', href: '/category/giam-can' },
+        { name: 'Tim mạch', href: '/category/tim-mach' },
+        { name: 'Tiêu hóa', href: '/category/tieu-hoa' }
+      ]
     },
     {
-      title: "Hỗ trợ",
+      title: 'Hỗ trợ',
       links: [
-        { name: "Giao hàng", href: "/shipping" },
-        { name: "Đổi trả", href: "/returns" },
-        { name: "Chính sách", href: "/policy" },
-        { name: "Liên hệ", href: "/contact" },
-      ],
-    },
-  ];
+        { name: 'Giao hàng', href: '/shipping' },
+        { name: 'Đổi trả', href: '/returns' },
+        { name: 'Chính sách', href: '/policy' },
+        { name: 'Liên hệ', href: '/contact' }
+      ]
+    }
+  ]
 
   const socialLinks = [
-    { name: "Facebook", href: "#", icon: "/social-icon/facebook.png" },
-    { name: "Zalo", href: "#", icon: "/social-icon/zalo.png" },
-    { name: "Tiktok", href: "#", icon: "/social-icon/tiktok.png" },
-    { name: "Youtube", href: "#", icon: "/social-icon/youtube.png" },
-  ];
+    { name: 'Facebook', href: '#', icon: '/social-icon/facebook.png' },
+    { name: 'Zalo', href: '#', icon: '/social-icon/zalo.png' },
+    { name: 'Tiktok', href: '#', icon: '/social-icon/tiktok.png' },
+    { name: 'Youtube', href: '#', icon: '/social-icon/youtube.png' }
+  ]
 
   return (
     <footer className="bg-white border-t border-slate-100 pt-16 pb-4 md:pt-32 md:pb-8">
@@ -108,5 +108,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

@@ -1,31 +1,32 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { Clock, FileCheck, RefreshCcw, ShieldCheck } from "lucide-react";
+import { motion } from 'framer-motion'
+import { Clock, FileCheck, RefreshCcw, ShieldCheck } from 'lucide-react'
 
-import { Breadcrumb } from "@/components/Breadcrumb";
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { PHONE_NUMBER } from '@/constants/common'
 
 export default function ReturnsPage() {
   const steps = [
     {
       icon: <Clock className="w-6 h-6 text-brand" />,
-      title: "Thời hạn đổi trả",
+      title: 'Thời hạn đổi trả',
       description:
-        "Hỗ trợ đổi trả sản phẩm trong vòng 30 ngày kể từ ngày nhận hàng nếu có lỗi từ nhà sản xuất.",
+        'Hỗ trợ đổi trả sản phẩm trong vòng 30 ngày kể từ ngày nhận hàng nếu có lỗi từ nhà sản xuất.'
     },
     {
       icon: <ShieldCheck className="w-6 h-6 text-brand" />,
-      title: "Điều kiện sản phẩm",
+      title: 'Điều kiện sản phẩm',
       description:
-        "Sản phẩm còn nguyên vẹn, chưa qua sử dụng, còn đầy đủ tem mác và hóa đơn mua hàng.",
+        'Sản phẩm còn nguyên vẹn, chưa qua sử dụng, còn đầy đủ tem mác và hóa đơn mua hàng.'
     },
     {
       icon: <FileCheck className="w-6 h-6 text-brand" />,
-      title: "Quy trình xử lý",
+      title: 'Quy trình xử lý',
       description:
-        "Tiếp nhận và phản hồi yêu cầu trong vòng 24-48 giờ làm việc sau khi nhận được thông tin.",
-    },
-  ];
+        'Tiếp nhận và phản hồi yêu cầu trong vòng 24-48 giờ làm việc sau khi nhận được thông tin.'
+    }
+  ]
 
   return (
     <div className="bg-white font-be-vietnam min-h-screen">
@@ -33,10 +34,7 @@ export default function ReturnsPage() {
       <section className="pt-32 pb-20 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <Breadcrumb
-            items={[
-              { label: "Trang chủ", href: "/" },
-              { label: "Đổi trả" }
-            ]}
+            items={[{ label: 'Trang chủ', href: '/' }, { label: 'Đổi trả' }]}
             className="mb-8"
           />
 
@@ -94,25 +92,24 @@ export default function ReturnsPage() {
             <div className="space-y-4">
               {[
                 {
-                  title: "Bước 1: Liên hệ hỗ trợ",
-                  content:
-                    "Gửi yêu cầu đổi trả qua Zalo: 0123 456 789 hoặc email support@greenlife.vn kèm theo hình ảnh/video sản phẩm và mã đơn hàng.",
+                  title: 'Bước 1: Liên hệ hỗ trợ',
+                  content: `Gửi yêu cầu đổi trả qua Zalo: ${PHONE_NUMBER} hoặc email support@greenlife.vn kèm theo hình ảnh/video sản phẩm và mã đơn hàng.`
                 },
                 {
-                  title: "Bước 2: Xác nhận yêu cầu",
+                  title: 'Bước 2: Xác nhận yêu cầu',
                   content:
-                    "Đội ngũ CSKH sẽ kiểm tra và xác nhận yêu cầu đổi trả của quý khách trong vòng 24 giờ làm việc.",
+                    'Đội ngũ CSKH sẽ kiểm tra và xác nhận yêu cầu đổi trả của quý khách trong vòng 24 giờ làm việc.'
                 },
                 {
-                  title: "Bước 3: Gửi trả hàng",
+                  title: 'Bước 3: Gửi trả hàng',
                   content:
-                    "Sau khi yêu cầu được chấp nhận, quý khách đóng gói sản phẩm cẩn thận và gửi về địa chỉ kho của GreenLife.",
+                    'Sau khi yêu cầu được chấp nhận, quý khách đóng gói sản phẩm cẩn thận và gửi về địa chỉ kho của GreenLife.'
                 },
                 {
-                  title: "Bước 4: Nhận sản phẩm mới hoặc hoàn tiền",
+                  title: 'Bước 4: Nhận sản phẩm mới hoặc hoàn tiền',
                   content:
-                    "Sau khi nhận và kiểm tra hàng trả lại, chúng tôi sẽ tiến hành gửi sản phẩm thay thế hoặc hoàn tiền theo thỏa thuận.",
-                },
+                    'Sau khi nhận và kiểm tra hàng trả lại, chúng tôi sẽ tiến hành gửi sản phẩm thay thế hoặc hoàn tiền theo thỏa thuận.'
+                }
               ].map((item, index) => (
                 <div
                   key={index}
@@ -136,12 +133,12 @@ export default function ReturnsPage() {
                 mọi thắc mắc về chính sách đổi trả.
               </p>
               <button className="px-10 py-5 bg-white text-brand rounded-2xl font-black text-lg hover:scale-105 transition-transform shadow-xl shadow-black/5">
-                Gọi 0123 456 789
+                Gọi {PHONE_NUMBER}
               </button>
             </div>
           </div>
         </div>
       </section>
     </div>
-  );
+  )
 }

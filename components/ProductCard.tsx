@@ -1,22 +1,22 @@
-"use client";
+'use client'
 
-import { Star } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { Star } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
 
-import { Product } from "@/lib/data";
+import { Product } from '@/lib/data'
 
 interface ProductCardProps {
-  product: Product;
-  showRating?: boolean;
-  showButton?: boolean;
-  className?: string;
+  product: Product
+  showRating?: boolean
+  showButton?: boolean
+  className?: string
 }
 
 export function ProductCard({
   product,
   showRating = false,
-  className = "",
+  className = ''
 }: ProductCardProps) {
   return (
     <div className={`group flex flex-col h-full ${className}`}>
@@ -46,11 +46,7 @@ export function ProductCard({
               <div className="px-3 py-2 bg-white/90 backdrop-blur-sm rounded-xl flex items-center gap-1.5 shadow-sm border-thin">
                 <div className="flex gap-0.5">
                   {[1].map((s) => (
-                    <Star
-                      key={s}
-                      className="text-yellow-400"
-                      size={12}
-                    ></Star>
+                    <Star key={s} className="text-yellow-400" size={12}></Star>
                   ))}
                 </div>
                 <span className="text-[9px] font-black text-slate-900">
@@ -69,5 +65,5 @@ export function ProductCard({
         </Link>
       </div>
     </div>
-  );
+  )
 }

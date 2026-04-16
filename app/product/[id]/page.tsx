@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 import {
   ArrowLeft,
   ArrowRight,
@@ -10,42 +10,43 @@ import {
   Plus,
   ShieldCheck,
   ShoppingCart,
-  Star,
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { use } from "react";
-import { useState } from "react";
-import { toast } from "sonner";
+  Star
+} from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { use } from 'react'
+import { useState } from 'react'
+import { toast } from 'sonner'
 
-import { Breadcrumb } from "@/components/Breadcrumb";
-import { ProductCard } from "@/components/ProductCard";
-import { useCart } from "@/context/CartContext";
-import { products } from "@/lib/data";
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { ProductCard } from '@/components/ProductCard'
+import { useCart } from '@/context/CartContext'
+import { products } from '@/lib/data'
 
 export default function ProductPage({
-  params,
+  params
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string }>
 }) {
-  const { id } = use(params);
-  const [quantity, setQuantity] = useState(1);
-  const { addToCart } = useCart();
+  const { id } = use(params)
+  const [quantity, setQuantity] = useState(1)
+  const { addToCart } = useCart()
 
-  const product = products.find((p) => p.id === parseInt(id)) || products[0];
+  const product = products.find((p) => p.id === parseInt(id)) || products[0]
 
   const handleAddToCart = () => {
-    addToCart(product.id.toString(), quantity);
-    toast.success(`Đã thêm ${quantity} ${product.name} vào giỏ hàng!`);
-  };
+    addToCart(product.id.toString(), quantity)
+    toast.success(`Đã thêm ${quantity} ${product.name} vào giỏ hàng!`)
+  }
 
-  const incrementQuantity = () => setQuantity((prev) => prev + 1);
-  const decrementQuantity = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  const incrementQuantity = () => setQuantity((prev) => prev + 1)
+  const decrementQuantity = () =>
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1))
 
   // Related products from the same category
   const relatedProducts = products
     .filter((p) => p.category === product.category && p.id !== product.id)
-    .slice(0, 3);
+    .slice(0, 3)
 
   return (
     <div className="text-slate-900 font-be-vietnam selection:bg-brand/10">
@@ -63,12 +64,14 @@ export default function ProductPage({
             </div>
             <Breadcrumb
               items={[
-                { label: "Trang chủ", href: "/" },
-                { label: product.categoryName, href: `/category/${product.category}` },
+                { label: 'Trang chủ', href: '/' },
+                {
+                  label: product.categoryName,
+                  href: `/category/${product.category}`
+                },
                 { label: product.name }
               ]}
             />
-
           </div>
         </section>
 
@@ -107,7 +110,10 @@ export default function ProductPage({
                   <div className="mb-4 flex items-center gap-2">
                     <div className="flex gap-0.5">
                       {[1, 2, 3, 4, 5].map((s) => (
-                        <Star key={s} className="w-3 h-3 text-yellow-500 fill-current" />
+                        <Star
+                          key={s}
+                          className="w-3 h-3 text-yellow-500 fill-current"
+                        />
                       ))}
                     </div>
                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
@@ -135,7 +141,9 @@ export default function ProductPage({
                       >
                         <Minus className="w-4 h-4" />
                       </button>
-                      <span className="w-12 text-center font-black">{quantity}</span>
+                      <span className="w-12 text-center font-black">
+                        {quantity}
+                      </span>
                       <button
                         onClick={incrementQuantity}
                         className="p-1 hover:text-brand transition-colors"
@@ -182,33 +190,59 @@ export default function ProductPage({
                 </h2>
                 <div className="prose prose-slate prose-lg max-w-none">
                   <p className="text-slate-600 font-medium leading-[1.8] mb-8">
-                    Sản phẩm Nutrilite của Amway được sản xuất dựa trên quy trình 9 bước nghiêm ngặt từ hạt giống đến thành phẩm. Chúng tôi cam kết mang lại những giá trị dinh dưỡng tinh túy nhất từ thiên nhiên để phục vụ sức khỏe của bạn và gia đình.
+                    Sản phẩm Nutrilite của Amway được sản xuất dựa trên quy
+                    trình 9 bước nghiêm ngặt từ hạt giống đến thành phẩm. Chúng
+                    tôi cam kết mang lại những giá trị dinh dưỡng tinh túy nhất
+                    từ thiên nhiên để phục vụ sức khỏe của bạn và gia đình.
                   </p>
                   <div className="grid sm:grid-cols-2 gap-4 mt-8">
                     {product.features.map((feature, i) => (
-                      <div key={i} className="flex items-center gap-3 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                      <div
+                        key={i}
+                        className="flex items-center gap-3 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm"
+                      >
                         <div className="w-5 h-5 bg-brand-soft rounded-full flex items-center justify-center flex-shrink-0">
                           <Plus className="w-3 h-3 text-brand" />
                         </div>
-                        <span className="text-sm font-bold text-slate-600">{feature}</span>
+                        <span className="text-sm font-bold text-slate-600">
+                          {feature}
+                        </span>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
               <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-50 self-start">
-                <h3 className="text-xl font-black mb-8 text-slate-900">Cam kết chất lượng</h3>
+                <h3 className="text-xl font-black mb-8 text-slate-900">
+                  Cam kết chất lượng
+                </h3>
                 <div className="space-y-8">
                   {[
-                    { icon: <ShieldCheck className="w-6 h-6 text-brand" />, title: "Chính hãng 100%", desc: "Bồi hoàn 200% nếu phát hiện hàng giả" },
-                    { icon: <Clock className="w-6 h-6 text-brand" />, title: "Giao hàng nhanh", desc: "Ship nhanh trong 24h tại khu vực nội thành" },
-                    { icon: <Droplets className="w-6 h-6 text-brand" />, title: "Đổi trả dễ dàng", desc: "Đổi trả trong vòng 7 ngày nếu lỗi sản xuất" }
+                    {
+                      icon: <ShieldCheck className="w-6 h-6 text-brand" />,
+                      title: 'Chính hãng 100%',
+                      desc: 'Bồi hoàn 200% nếu phát hiện hàng giả'
+                    },
+                    {
+                      icon: <Clock className="w-6 h-6 text-brand" />,
+                      title: 'Giao hàng nhanh',
+                      desc: 'Ship nhanh trong 24h tại khu vực nội thành'
+                    },
+                    {
+                      icon: <Droplets className="w-6 h-6 text-brand" />,
+                      title: 'Đổi trả dễ dàng',
+                      desc: 'Đổi trả trong vòng 7 ngày nếu lỗi sản xuất'
+                    }
                   ].map((item, i) => (
                     <div key={i} className="flex gap-4">
                       <div className="flex-shrink-0">{item.icon}</div>
                       <div>
-                        <div className="text-sm font-black text-slate-900 mb-1">{item.title}</div>
-                        <div className="text-xs font-medium text-slate-400 leading-relaxed">{item.desc}</div>
+                        <div className="text-sm font-black text-slate-900 mb-1">
+                          {item.title}
+                        </div>
+                        <div className="text-xs font-medium text-slate-400 leading-relaxed">
+                          {item.desc}
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -244,5 +278,5 @@ export default function ProductPage({
         )}
       </main>
     </div>
-  );
+  )
 }

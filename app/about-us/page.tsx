@@ -1,32 +1,32 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { Leaf, ShieldCheck, Target, Users } from "lucide-react";
-import Image from "next/image";
+import { motion } from 'framer-motion'
+import { Leaf, ShieldCheck, Target, Users } from 'lucide-react'
+import Image from 'next/image'
 
-import { Breadcrumb } from "@/components/Breadcrumb";
+import { Breadcrumb } from '@/components/Breadcrumb'
 
 export default function AboutUsPage() {
   const values = [
     {
       icon: <Target className="w-6 h-6 text-brand" />,
-      title: "Sứ mệnh",
+      title: 'Sứ mệnh',
       description:
-        "Nâng tầm chất lượng cuộc sống người Việt thông qua giải pháp dinh dưỡng thuần khiết và khoa học.",
+        'Nâng tầm chất lượng cuộc sống người Việt thông qua giải pháp dinh dưỡng thuần khiết và khoa học.'
     },
     {
       icon: <Users className="w-6 h-6 text-blue-500" />,
-      title: "Cộng đồng",
+      title: 'Cộng đồng',
       description:
-        "Xây dựng hệ sinh thái sống khỏe, nơi mọi người chia sẻ và truyền cảm hứng về lối sống lành mạnh.",
+        'Xây dựng hệ sinh thái sống khỏe, nơi mọi người chia sẻ và truyền cảm hứng về lối sống lành mạnh.'
     },
     {
       icon: <ShieldCheck className="w-6 h-6 text-orange-500" />,
-      title: "Chất lượng",
+      title: 'Chất lượng',
       description:
-        "Cam kết 100% sản phẩm chính hãng Nutrilite - Thương hiệu thực phẩm bổ sung bán chạy số 1 thế giới.",
-    },
-  ];
+        'Cam kết 100% sản phẩm chính hãng Nutrilite - Thương hiệu thực phẩm bổ sung bán chạy số 1 thế giới.'
+    }
+  ]
 
   return (
     <div className="bg-white font-be-vietnam min-h-screen">
@@ -35,13 +35,12 @@ export default function AboutUsPage() {
         <div className="max-w-7xl mx-auto px-6 items-center">
           <Breadcrumb
             items={[
-              { label: "Trang chủ", href: "/" },
-              { label: "Về chúng tôi" }
+              { label: 'Trang chủ', href: '/' },
+              { label: 'Về chúng tôi' }
             ]}
             className="mb-8"
           />
           <div className="grid lg:grid-cols-2 gap-20">
-
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -174,17 +173,17 @@ export default function AboutUsPage() {
               <div className="space-y-8">
                 {[
                   {
-                    title: "Nền tảng khoa học",
-                    desc: "Mọi lời khuyên của chúng tôi đều dựa trên các nghiên cứu khoa học từ đội ngũ Nutrilite Global.",
+                    title: 'Nền tảng khoa học',
+                    desc: 'Mọi lời khuyên của chúng tôi đều dựa trên các nghiên cứu khoa học từ đội ngũ Nutrilite Global.'
                   },
                   {
-                    title: "Cá nhân hóa lộ trình",
-                    desc: "Mỗi cơ thể là duy nhất. Chúng tôi thiết kế lộ trình dinh dưỡng riêng biệt cho từng khách hàng.",
+                    title: 'Cá nhân hóa lộ trình',
+                    desc: 'Mỗi cơ thể là duy nhất. Chúng tôi thiết kế lộ trình dinh dưỡng riêng biệt cho từng khách hàng.'
                   },
                   {
-                    title: "Sự minh bạch tuyệt đối",
-                    desc: "Từ trang trại hữu cơ đến tận tay người dùng, mọi quy trình đều có thể truy xuất nguồn gốc.",
-                  },
+                    title: 'Sự minh bạch tuyệt đối',
+                    desc: 'Từ trang trại hữu cơ đến tận tay người dùng, mọi quy trình đều có thể truy xuất nguồn gốc.'
+                  }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-6">
                     <div className="w-6 h-6 rounded-full bg-brand-soft flex-shrink-0 flex items-center justify-center">
@@ -207,8 +206,8 @@ export default function AboutUsPage() {
       </section>
 
       {/* Stats Section with brand secondary color */}
-      <section className="py-24 bg-brand rounded-[4rem] mx-6 mb-32 text-white">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+      <section className=" mx-6 mb-32 text-white">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center py-24 bg-brand rounded-[4rem]">
           <div>
             <div className="text-5xl font-black mb-2">5+</div>
             <div className="text-[10px] font-black uppercase tracking-widest text-white/60">
@@ -236,5 +235,5 @@ export default function AboutUsPage() {
         </div>
       </section>
     </div>
-  );
+  )
 }

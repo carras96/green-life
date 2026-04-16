@@ -1,34 +1,42 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { ArrowRight, Mail, MapPin, MessageSquare, Phone, Send } from "lucide-react";
+import { motion } from 'framer-motion'
+import {
+  ArrowRight,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Phone,
+  Send
+} from 'lucide-react'
 
-import { Breadcrumb } from "@/components/Breadcrumb";
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { PHONE_NUMBER } from '@/constants/common'
 
 export default function ContactPage() {
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6" />,
-      title: "Hotline Tư vấn",
-      value: "0123 456 789",
-      desc: "Hỗ trợ từ 8:00 - 21:00 hàng ngày",
-      color: "bg-blue-50 text-blue-600"
+      title: 'Hotline Tư vấn',
+      value: PHONE_NUMBER,
+      desc: 'Hỗ trợ từ 8:00 - 21:00 hàng ngày',
+      color: 'bg-blue-50 text-blue-600'
     },
     {
       icon: <Mail className="w-6 h-6" />,
-      title: "Email Hỗ trợ",
-      value: "support@greenlife.vn",
-      desc: "Chúng tôi phản hồi trong vòng 24h",
-      color: "bg-orange-50 text-orange-600"
+      title: 'Email Hỗ trợ',
+      value: 'support@greenlife.vn',
+      desc: 'Chúng tôi phản hồi trong vòng 24h',
+      color: 'bg-orange-50 text-orange-600'
     },
     {
       icon: <MessageSquare className="w-6 h-6" />,
-      title: "Zalo OA",
-      value: "GreenLife Academy",
-      desc: "Nhắn tin trực tiếp để được tư vấn",
-      color: "bg-brand-soft text-brand"
+      title: 'Zalo OA',
+      value: 'GreenLife Academy',
+      desc: 'Nhắn tin trực tiếp để được tư vấn',
+      color: 'bg-brand-soft text-brand'
     }
-  ];
+  ]
 
   return (
     <div className="bg-white font-be-vietnam min-h-screen">
@@ -36,10 +44,7 @@ export default function ContactPage() {
       <section className="pt-32 pb-20 bg-slate-900 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <Breadcrumb
-            items={[
-              { label: "Trang chủ", href: "/" },
-              { label: "Liên hệ" }
-            ]}
+            items={[{ label: 'Trang chủ', href: '/' }, { label: 'Liên hệ' }]}
             className="mb-8"
           />
 
@@ -52,11 +57,13 @@ export default function ContactPage() {
               Kết nối với chúng tôi
             </span>
             <h1 className="text-5xl md:text-7xl font-black mb-10 text-white leading-tight">
-              Chúng tôi luôn <br /> <span className="text-brand">lắng nghe bạn</span>
+              Chúng tôi luôn <br />{' '}
+              <span className="text-brand">lắng nghe bạn</span>
             </h1>
             <p className="text-slate-500 text-lg font-medium leading-relaxed max-w-2xl">
-              Mọi ý kiến đóng góp hoặc thắc mắc của quý khách là động lực để GreenLife hoàn thiện hơn mỗi ngày.
-              Hãy để lại lời nhắn, chúng tôi sẽ phản hồi sớm nhất có thể.
+              Mọi ý kiến đóng góp hoặc thắc mắc của quý khách là động lực để
+              GreenLife hoàn thiện hơn mỗi ngày. Hãy để lại lời nhắn, chúng tôi
+              sẽ phản hồi sớm nhất có thể.
             </p>
           </motion.div>
         </div>
@@ -79,13 +86,21 @@ export default function ContactPage() {
                   className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow group"
                 >
                   <div className="flex gap-6 items-center">
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 ${info.color}`}>
+                    <div
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 ${info.color}`}
+                    >
                       {info.icon}
                     </div>
                     <div>
-                      <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">{info.title}</h3>
-                      <div className="text-xl font-black text-slate-900 mb-1">{info.value}</div>
-                      <p className="text-sm font-medium text-slate-400">{info.desc}</p>
+                      <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">
+                        {info.title}
+                      </h3>
+                      <div className="text-xl font-black text-slate-900 mb-1">
+                        {info.value}
+                      </div>
+                      <p className="text-sm font-medium text-slate-400">
+                        {info.desc}
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -102,7 +117,10 @@ export default function ContactPage() {
                     72 Lê Thánh Tôn, Phường Bến Nghé, Quận 1, <br />
                     Thành phố Hồ Chí Minh, Việt Nam.
                   </p>
-                  <a href="#" className="inline-flex items-center gap-2 text-white font-black text-[10px] uppercase tracking-widest hover:text-brand transition-colors">
+                  <a
+                    href="#"
+                    className="inline-flex items-center gap-2 text-white font-black text-[10px] uppercase tracking-widest hover:text-brand transition-colors"
+                  >
                     Xem bản đồ <ArrowRight className="w-3 h-3" />
                   </a>
                 </div>
@@ -118,10 +136,15 @@ export default function ContactPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="bg-white p-10 md:p-16 rounded-[3rem] border border-slate-100 shadow-2xl shadow-slate-200/50"
               >
-                <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+                <form
+                  className="space-y-8"
+                  onSubmit={(e) => e.preventDefault()}
+                >
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Họ và tên</label>
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">
+                        Họ và tên
+                      </label>
                       <input
                         type="text"
                         placeholder="Nguyễn Văn A"
@@ -129,7 +152,9 @@ export default function ContactPage() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Số điện thoại</label>
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">
+                        Số điện thoại
+                      </label>
                       <input
                         type="tel"
                         placeholder="0123456789"
@@ -138,7 +163,9 @@ export default function ContactPage() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Email</label>
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">
+                      Email
+                    </label>
                     <input
                       type="email"
                       placeholder="email@example.com"
@@ -146,7 +173,9 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Lời nhắn</label>
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">
+                      Lời nhắn
+                    </label>
                     <textarea
                       rows={5}
                       placeholder="Bạn cần chúng tôi hỗ trợ gì?"
@@ -163,5 +192,5 @@ export default function ContactPage() {
         </div>
       </section>
     </div>
-  );
+  )
 }

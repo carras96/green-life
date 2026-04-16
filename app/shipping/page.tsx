@@ -1,31 +1,32 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { Globe, ShieldCheck, Truck } from "lucide-react";
+import { motion } from 'framer-motion'
+import { Globe, ShieldCheck, Truck } from 'lucide-react'
 
-import { Breadcrumb } from "@/components/Breadcrumb";
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { PHONE_NUMBER } from '@/constants/common'
 
 export default function ShippingPage() {
   const features = [
     {
       icon: <Truck className="w-6 h-6 text-brand" />,
-      title: "Giao hàng nhanh chóng",
+      title: 'Giao hàng nhanh chóng',
       description:
-        "Đơn hàng nội thành được giao trong vòng 24h. Các tỉnh thành khác từ 2-4 ngày làm việc.",
+        'Đơn hàng nội thành được giao trong vòng 24h. Các tỉnh thành khác từ 2-4 ngày làm việc.'
     },
     {
       icon: <Globe className="w-6 h-6 text-brand" />,
-      title: "Ship hàng toàn quốc",
+      title: 'Ship hàng toàn quốc',
       description:
-        "GreenLife hỗ trợ giao hàng tận nơi trên toàn lãnh thổ Việt Nam với chi phí tối ưu nhất.",
+        'GreenLife hỗ trợ giao hàng tận nơi trên toàn lãnh thổ Việt Nam với chi phí tối ưu nhất.'
     },
     {
       icon: <ShieldCheck className="w-6 h-6 text-brand" />,
-      title: "Đảm bảo an toàn",
+      title: 'Đảm bảo an toàn',
       description:
-        "Mọi sản phẩm đều được đóng gói kỹ lưỡng và bảo hiểm 100% giá trị trong quá trình vận chuyển.",
-    },
-  ];
+        'Mọi sản phẩm đều được đóng gói kỹ lưỡng và bảo hiểm 100% giá trị trong quá trình vận chuyển.'
+    }
+  ]
 
   return (
     <div className="bg-white font-be-vietnam min-h-screen">
@@ -33,10 +34,7 @@ export default function ShippingPage() {
       <section className="pt-32 pb-20 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <Breadcrumb
-            items={[
-              { label: "Trang chủ", href: "/" },
-              { label: "Giao hàng" }
-            ]}
+            items={[{ label: 'Trang chủ', href: '/' }, { label: 'Giao hàng' }]}
             className="mb-8"
           />
 
@@ -149,8 +147,10 @@ export default function ShippingPage() {
                     3
                   </div>
                   <p className="text-slate-300 font-medium text-sm leading-relaxed">
-                    Mọi vấn đề phát sinh vui lòng liên hệ hotline{" "}
-                    <span className="text-white font-black">0123 456 789</span>{" "}
+                    Mọi vấn đề phát sinh vui lòng liên hệ hotline{' '}
+                    <span className="text-white font-black">
+                      {PHONE_NUMBER}
+                    </span>{' '}
                     trong vòng 24h kể từ khi nhận hàng.
                   </p>
                 </li>
@@ -160,5 +160,5 @@ export default function ShippingPage() {
         </div>
       </section>
     </div>
-  );
+  )
 }
