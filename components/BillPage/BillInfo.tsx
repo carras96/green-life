@@ -12,56 +12,69 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 
 export default function BillInfo() {
-    const { register, control } = useFormContext();
+    const { register, control, watch } = useFormContext();
+
+    const invoiceNumber = watch("invoiceNumber");
 
     return (
-        <div className="grid grid-cols-2 gap-8 mb-6 bg-white p-4">
-            <div>
+        <div className="grid grid-cols-2 gap-8 mb-6 bg-white py-4">
+            <div className="h-full flex flex-col">
                 <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
                     <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                     THÔNG TIN KHÁCH HÀNG
                 </h3>
-                <div className="space-y-2 text-gray-700 text-sm">
+                <div className=" text-gray-700 text-sm flex justify-between flex-col flex-1">
                     <div className="flex items-center">
-                        <span className="w-32 flex-shrink-0">Tên khách hàng:</span>
+                        <span className="w-32 flex-shrink-0 font-medium text-gray-900">Tên khách hàng:</span>
                         <Input
                             {...register("customerName")}
-                            className="h-8 border-0 border-b border-dotted border-gray-400 rounded-none shadow-none focus-visible:ring-0 px-1 bg-transparent flex-grow font-medium autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:text-gray-700"
+                            placeholder="................................................................................"
+                            className="h-8 border-0  rounded-none shadow-none focus-visible:ring-0 px-1 bg-transparent flex-grow font-medium autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:text-gray-700"
                         />
                     </div>
                     <div className="flex items-center">
-                        <span className="w-32 flex-shrink-0">Số điện thoại:</span>
+                        <span className="w-32 flex-shrink-0 font-medium text-gray-900">Số điện thoại:</span>
                         <Input
                             {...register("phoneNumber")}
-                            className="h-8 border-0 border-b border-dotted border-gray-400 rounded-none shadow-none focus-visible:ring-0 px-1 bg-transparent flex-grow font-medium autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:text-gray-700"
+                            placeholder="................................................................................"
+                            className="h-8 border-0  rounded-none shadow-none focus-visible:ring-0 px-1 bg-transparent flex-grow font-medium autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:text-gray-700"
                         />
                     </div>
                     <div className="flex items-center">
-                        <span className="w-32 flex-shrink-0">Địa chỉ:</span>
+                        <span className="w-32 flex-shrink-0 font-medium text-gray-900">Địa chỉ:</span>
                         <Input
                             {...register("address")}
-                            className="h-8 border-0 border-b border-dotted border-gray-400 rounded-none shadow-none focus-visible:ring-0 px-1 bg-transparent flex-grow font-medium autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:text-gray-700"
+                            placeholder="................................................................................"
+                            className="h-8 border-0  rounded-none shadow-none focus-visible:ring-0 px-1 bg-transparent flex-grow font-medium autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:text-gray-700"
                         />
                     </div>
                 </div>
             </div>
 
             {/* THÔNG TIN HÓA ĐƠN */}
-            <div>
+            <div className="h-full flex flex-col">
                 <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
                     <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                     THÔNG TIN HÓA ĐƠN
                 </h3>
-                <div className="space-y-2 text-gray-700 text-sm">
+                <div className=" text-gray-700 text-sm flex justify-between flex-col flex-1">
                     <div className="flex items-center">
                         <span className="w-32 flex-shrink-0 font-medium text-gray-900">Số hóa đơn:</span>
-                        <Input
+                        <span className="flex-shrink-0 font-medium text-gray-900 h-8">{invoiceNumber}</span>
+                        {/* <Input
                             {...register("invoiceNumber")}
-                            className="h-8 border-0 border-b border-dotted border-gray-400 rounded-none shadow-none focus-visible:ring-0 px-1 bg-transparent flex-grow font-medium autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:text-gray-700"
-                        />
+                            className="h-8 border-0  rounded-none shadow-none focus-visible:ring-0 px-1 bg-transparent flex-grow font-medium autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:text-gray-700"
+                        /> */}
                     </div>
 
                     {/* NGÀY LẬP - SHADCN DATE PICKER */}
@@ -77,7 +90,7 @@ export default function BillInfo() {
                                         <div
                                             role="button"
                                             className={cn(
-                                                "w-full h-8 border-0 border-b border-dotted border-gray-400 cursor-pointer flex items-center px-1 bg-transparent flex-grow font-medium text-sm text-gray-900",
+                                                "w-full h-8 border-0  cursor-pointer flex items-center bg-transparent flex-grow font-medium text-sm text-gray-900",
                                                 !field.value && "text-muted-foreground"
                                             )}
                                         >
@@ -105,13 +118,25 @@ export default function BillInfo() {
 
                     <div className="flex items-center text-sm">
                         <span className="w-32 flex-shrink-0 font-medium text-gray-900">Phương thức:</span>
-                        <select
-                            {...register("paymentMethod")}
-                            className="h-8 border-0 border-b border-dotted border-gray-400 rounded-none shadow-none focus-visible:ring-0 px-1 bg-transparent flex-grow outline-none cursor-pointer"
-                        >
-                            <option value="Chuyển khoản">Chuyển khoản</option>
-                            <option value="Tiền mặt">Tiền mặt</option>
-                        </select>
+                        <Controller
+                            control={control}
+                            name="paymentMethod"
+                            render={({ field }) => (
+                                <Select
+                                    onValueChange={field.onChange}
+                                    defaultValue={field.value}
+                                    value={field.value}
+                                >
+                                    <SelectTrigger className="h-8 border-0 rounded-none shadow-none focus-visible:ring-0 bg-transparent flex-grow outline-none cursor-pointer p-0 font-medium text-sm text-gray-900">
+                                        <SelectValue placeholder="Chọn phương thức" />
+                                    </SelectTrigger>
+                                    <SelectContent className="p-2">
+                                        <SelectItem value="Chuyển khoản">Chuyển khoản</SelectItem>
+                                        <SelectItem value="Tiền mặt">Tiền mặt</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            )}
+                        />
                     </div>
                 </div>
             </div>

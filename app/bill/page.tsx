@@ -5,7 +5,7 @@ import { toPng } from 'html-to-image';
 import jsPDF from 'jspdf';
 import { Printer } from 'lucide-react';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import BillInfo from '@/components/BillPage/BillInfo';
@@ -21,8 +21,8 @@ export default function BillPage() {
       customerName: "",
       phoneNumber: "",
       address: "",
-      invoiceNumber: new Date().getTime().toString(),
-      invoiceDate: new Date().toISOString().split("T")[0],
+      invoiceNumber: "",
+      invoiceDate: "",
       paymentMethod: "Chuyển khoản",
       items: Array.from({ length: 10 }).map(() => ({
         name: "",
@@ -32,6 +32,15 @@ export default function BillPage() {
       shippingFee: "" as any,
     },
   });
+
+  // Hydration fix: Initialize dynamic values only on the client
+  useEffect(() => {
+    methods.reset({
+      ...methods.getValues(),
+      invoiceNumber: new Date().getTime().toString(),
+      invoiceDate: new Date().toISOString().split("T")[0],
+    });
+  }, [methods.reset]);
 
   const handleDownloadPdf = async () => {
     if (printRef.current === null) return;
