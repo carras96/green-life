@@ -4,37 +4,20 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, Minus, Plus, ShoppingCart, Trash2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { useCart } from '@/context/CartContext'
-import { products } from '@/lib/data'
+import { formatPrice } from '@/helpers/number'
 
 export default function CartPage() {
+  const router = useRouter()
   const { cart, removeFromCart, updateQuantity, totalItems } = useCart()
 
-  // Helper to parse price string to number
-  const parsePrice = (priceStr: string) => {
-    return parseInt(priceStr.replace(/\./g, '').replace('₫', ''))
-  }
+  console.log(cart, 'cart')
 
-  // Helper to format number back to price string
-  const formatPrice = (price: number) => {
-    return price.toLocaleString('vi-VN') + '₫'
-  }
-
-  const cartDetails = cart
-    .map((item) => {
-      const product = products.find((p) => p.id === parseInt(item.productId))
-      return {
-        ...item,
-        product
-      }
-    })
-    .filter((item) => item.product)
-
-  const subtotal = cartDetails.reduce((sum, item) => {
-    if (!item.product) return sum
-    return sum + parsePrice(item.product.price) * item.quantity
+  const subtotal = cart.reduce((sum, item) => {
+    return sum + item.price * item.quantity
   }, 0)
 
   if (cart.length === 0) {
@@ -80,16 +63,16 @@ export default function CartPage() {
           <div className="grid lg:grid-cols-3 gap-12 lg:gap-20 items-start">
             {/* Cart Items List */}
             <div className="lg:col-span-2 space-y-6">
-              {cartDetails.map((item) => (
+              {cart.map((item) => (
                 <motion.div
                   layout
-                  key={item.productId}
+                  key={item.id}
                   className="flex flex-col sm:flex-row items-center gap-6 p-6 bg-white rounded-3xl border border-slate-100 shadow-sm"
                 >
                   <div className="relative w-24 h-24 sm:w-32 sm:h-32 bg-slate-50 rounded-2xl overflow-hidden flex-shrink-0">
                     <Image
-                      src={item.product!.image}
-                      alt={item.product!.name}
+                      src={item.image}
+                      alt={item.name}
                       fill
                       className="object-cover"
                     />
@@ -97,27 +80,25 @@ export default function CartPage() {
 
                   <div className="flex-grow text-center sm:text-left">
                     <div className="text-[10px] font-black uppercase tracking-widest text-brand mb-1">
-                      {item.product!.tag}
+                      {item.tag}
                     </div>
                     <h3 className="text-lg font-black text-slate-900 mb-2">
                       <Link
-                        href={`/product/${item.productId}`}
+                        href={`/product/${item.id}`}
                         className="hover:text-brand transition-colors"
                       >
-                        {item.product!.name}
+                        {item.name}
                       </Link>
                     </h3>
                     <div className="text-lg font-black text-slate-400">
-                      {item.product!.price}
+                      {formatPrice(item.price)}
                     </div>
                   </div>
 
                   <div className="flex flex-col items-center sm:items-end gap-4">
                     <div className="flex items-center bg-slate-50 rounded-xl px-4 py-2 border border-slate-100">
                       <button
-                        onClick={() =>
-                          updateQuantity(item.productId, item.quantity - 1)
-                        }
+                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
                         className="p-1 hover:text-brand transition-colors"
                       >
                         <Minus className="w-4 h-4" />
@@ -126,9 +107,7 @@ export default function CartPage() {
                         {item.quantity}
                       </span>
                       <button
-                        onClick={() =>
-                          updateQuantity(item.productId, item.quantity + 1)
-                        }
+                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
                         className="p-1 hover:text-brand transition-colors"
                       >
                         <Plus className="w-4 h-4" />
@@ -136,7 +115,7 @@ export default function CartPage() {
                     </div>
 
                     <button
-                      onClick={() => removeFromCart(item.productId)}
+                      onClick={() => removeFromCart(item.id)}
                       className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-red-400 hover:text-red-600 transition-colors"
                     >
                       <Trash2 className="w-4 h-4" /> Xóa
@@ -182,7 +161,10 @@ export default function CartPage() {
                   </span>
                 </div>
 
-                <button className="w-full py-5 bg-brand text-white rounded-2xl font-black text-lg shadow-lg shadow-brand/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                <button
+                  onClick={() => router.push('/bill/cart')}
+                  className="w-full py-5 bg-brand text-white rounded-2xl font-black text-lg shadow-lg shadow-brand/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                >
                   Tiến hành thanh toán
                 </button>
 

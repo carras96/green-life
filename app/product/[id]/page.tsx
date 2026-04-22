@@ -21,6 +21,7 @@ import { toast } from 'sonner'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { ProductCard } from '@/components/ProductCard'
 import { useCart } from '@/context/CartContext'
+import { formatPrice } from '@/helpers/number'
 import { products } from '@/lib/data'
 
 export default function ProductPage({
@@ -32,10 +33,10 @@ export default function ProductPage({
   const [quantity, setQuantity] = useState(1)
   const { addToCart } = useCart()
 
-  const product = products.find((p) => p.id === parseInt(id)) || products[0]
+  const product = products.find((p) => p.id === id) || products[0]
 
   const handleAddToCart = () => {
-    addToCart(product.id.toString(), quantity)
+    addToCart(product, quantity)
     toast.success(`Đã thêm ${quantity} ${product.name} vào giỏ hàng!`)
   }
 
@@ -126,7 +127,7 @@ export default function ProductPage({
                   </h1>
 
                   <div className="text-3xl font-black text-brand mb-8">
-                    {product.price}
+                    {formatPrice(product.price)}
                   </div>
 
                   <p className="text-lg text-slate-500 font-medium leading-relaxed mb-10">

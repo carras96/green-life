@@ -22,12 +22,12 @@ export interface Benefit {
 }
 
 export interface Product {
-  id: number
+  id: string
   category: string
   categoryName: string
   name: string
   tag: string
-  price: string
+  price: number
   image: string
   description: string
   benefits: Benefit[]
@@ -62,12 +62,12 @@ export const categories: Record<string, Category> = {
 
 export const products: Product[] = [
   {
-    id: 1,
+    id: '1',
     category: 'dinh-duong',
     categoryName: 'Dinh dưỡng',
     name: 'Nutrilite All Plant Protein',
     tag: 'Sức khỏe nền tảng',
-    price: '850.000₫',
+    price: 850000,
     image: '/product-protein.png',
     description:
       'Sản phẩm cung cấp nguồn đạm thực vật chất lượng cao từ đậu nành, lúa mì và đậu Hà Lan. Giúp cơ thể phục hồi năng lượng, hỗ trợ cơ bắp và tăng cường sức đề kháng.',
@@ -96,12 +96,12 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 2,
+    id: '2',
     category: 'tim-mach',
     categoryName: 'Tim mạch',
     name: 'Nutrilite Salmon Omega-3',
     tag: 'Hỗ trợ tim mạch',
-    price: '920.000₫',
+    price: 920000,
     image: '/product-omega3.png',
     description:
       'Hỗ trợ cung cấp các acid béo không no EPA và DHA tốt cho tim mạch và não bộ. Được chiết xuất từ cá hồi vùng biển lạnh tinh khiết.',
@@ -130,12 +130,12 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 3,
+    id: '3',
     category: 'dinh-duong',
     categoryName: 'Dinh dưỡng',
     name: 'Nutrilite Bio C Plus',
     tag: 'Tăng cường đề kháng',
-    price: '460.000₫',
+    price: 460000,
     image: '/product-vitaminc.png',
     description:
       'Bổ sung Vitamin C từ bột đông khô quả Acerola Cherry kết hợp với dưỡng chất thực vật từ các loại quả họ cam quýt.',
@@ -164,12 +164,12 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 4,
+    id: '4',
     category: 'dinh-duong',
     categoryName: 'Dinh dưỡng',
     name: 'Nutrilite Vitamin B Plus',
     tag: 'Tăng cường năng lượng',
-    price: '550.000₫',
+    price: 550000,
     image: '/product-vitamin.png',
     description:
       'Giải pháp toàn diện cung cấp 8 loại Vitamin B thiết yếu giúp chuyển hóa năng lượng hiệu quả và giảm mệt mỏi.',
@@ -198,12 +198,12 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 5,
+    id: '5',
     category: 'tieu-hoa',
     categoryName: 'Tiêu hóa',
     name: 'Nutrilite Probiotic',
     tag: 'Hỗ trợ tiêu hóa',
-    price: '780.000₫',
+    price: 780000,
     image: '/product-immunity.png',
     description:
       'Cung cấp 5 chủng lợi khuẩn được nghiên cứu lâm sàng, giúp cân bằng hệ vi sinh đường ruột và tăng cường sức khỏe tiêu hóa.',
@@ -232,12 +232,12 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 6,
+    id: '6',
     category: 'giam-can',
     categoryName: 'Giảm cân',
     name: 'Nutrilite Bodykey Carbon Reduce',
     tag: 'Kiểm soát cân nặng',
-    price: '1.200.000₫',
+    price: 1200000,
     image: '/product-protein.png',
     description:
       'Hỗ trợ kiểm soát cân nặng bằng cách hạn chế quá trình chuyển hóa carbohydrate thành chất béo. Đồng hành cùng bạn trong hành trình lấy lại vóc dáng.',

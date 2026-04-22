@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import { Controller, useFieldArray, useFormContext } from 'react-hook-form'
@@ -14,15 +13,17 @@ import {
   TableRow
 } from '@/components/ui/table'
 
+import { BillItem } from './bill.types'
+
 export default function BillTable() {
   const { register, control, watch } = useFormContext()
 
   const { fields } = useFieldArray({ control, name: 'items' })
   const watchedItems = watch('items')
 
-  const subtotal = (watchedItems || []).reduce((acc: number, item: any) => {
-    const qty = parseFloat(item?.quantity) || 0
-    const price = parseFloat(item?.price) || 0
+  const subtotal = (watchedItems || []).reduce((acc: number, item: BillItem) => {
+    const qty = item?.quantity || 0
+    const price = item?.price || 0
     return acc + qty * price
   }, 0)
 

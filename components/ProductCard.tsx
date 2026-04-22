@@ -4,6 +4,7 @@ import { Star } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { formatPrice } from '@/helpers/number'
 import { Product } from '@/lib/data'
 
 interface ProductCardProps {
@@ -39,7 +40,7 @@ export function ProductCard({
           <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
             <div className="px-4 py-2 bg-slate-900/80 backdrop-blur-md rounded-xl text-white shadow-xl">
               <span className="text-sm font-black tracking-tight">
-                {product.price}
+                {formatPrice(product.price)}
               </span>
             </div>
             {showRating && (

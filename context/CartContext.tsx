@@ -2,14 +2,15 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
-export interface CartItem {
-  productId: string
+import { Product } from '@/lib/data'
+
+export interface CartItem extends Product {
   quantity: number
 }
 
 interface CartContextType {
   cart: CartItem[]
-  addToCart: (productId: string, quantity: number) => void
+  addToCart: (product: Product, quantity: number) => void
   removeFromCart: (productId: string) => void
   updateQuantity: (productId: string, quantity: number) => void
   clearCart: () => void
@@ -59,20 +60,18 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, [cartState.items, cartState.isInitialized])
 
-  const addToCart = (productId: string, quantity: number) => {
+  const addToCart = (product: Product, quantity: number) => {
     setCartState((prev) => {
-      const existingItem = prev.items.find(
-        (item) => item.productId === productId
-      )
+      const existingItem = prev.items.find((item) => item.id === product.id)
       let newItems
       if (existingItem) {
         newItems = prev.items.map((item) =>
-          item.productId === productId
+          item.id === product.id
             ? { ...item, quantity: item.quantity + quantity }
             : item
         )
       } else {
-        newItems = [...prev.items, { productId, quantity }]
+        newItems = [...prev.items, { ...product, quantity }]
       }
       return { ...prev, items: newItems }
     })
@@ -81,7 +80,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const removeFromCart = (productId: string) => {
     setCartState((prev) => ({
       ...prev,
-      items: prev.items.filter((item) => item.productId !== productId)
+      items: prev.items.filter((item) => item.id !== productId)
     }))
   }
 
@@ -93,7 +92,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setCartState((prev) => ({
       ...prev,
       items: prev.items.map((item) =>
-        item.productId === productId ? { ...item, quantity } : item
+        item.id === productId ? { ...item, quantity } : item
       )
     }))
   }
